@@ -1,2 +1,2 @@
 # TYP-app
-_My first app created as final workshop at Coderslab_
+_TYP is like Instagram for text. Allows you to add some predefined typography styles like "filters" to your posts._

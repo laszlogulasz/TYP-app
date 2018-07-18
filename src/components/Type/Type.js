@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from 'react-redux';
-import * as actionTypes from '../../reducers/actions';
+import {onTitleChange, onTypChange} from '../../actions';
 
 const Type = (props) => {
 
@@ -41,18 +41,9 @@ const mapStateToProps = state => {
   return {
     title: state.titleReducer.title,
     typ: state.typReducer.typ
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onTitleChange: (title) => dispatch({
-      type: actionTypes.UPDATE_TITLE, titleData: {title: title}
-    }),
-    onTypChange: (typ) => dispatch({
-      type: actionTypes.UPDATE_TYP, typData: {typ: typ}
-    })
   }
 };
+
+const mapDispatchToProps = {onTitleChange, onTypChange};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Type);
