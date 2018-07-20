@@ -1,7 +1,7 @@
-const typReducer = (state = {typ: []}, action) => {
+const typReducer = (state = '', action) => {
   switch (action.type) {
     case 'UPDATE_TYP':
-      return {...state, typ: action.typValue}
+      return action.typ;
     default:
       return state;
   }

@@ -2,13 +2,7 @@
   overflow: auto;
 
   .post {
-    align-items: center;
-    background-color: $white;
-    padding: 15px 15px 10px;
-    margin: 10px;
-    @include border($lightgray);
-    border-radius: 5px;
-    box-shadow: 0 0 3px 1px rgba(200,200,200,1);
+    @include post();
 
     .fa-user,
     h3 {

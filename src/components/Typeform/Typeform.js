@@ -15,8 +15,8 @@ const Typeform = (props) => {
   return (
     <div className="me">
       <h1>Type your TYP :)</h1>
-      <form className="tapeform">
-        <div className="tape__container">
+      <form className="typeform">
+        <div className="type__container">
           <textarea
             className="type__content type__content--title"
             name="title"
@@ -28,7 +28,7 @@ const Typeform = (props) => {
             {title + '\n'}
           </div>
         </div>
-        <div className="tape__container">
+        <div className="type__container">
           <textarea
             className="type__content type__content--typ"
             name="typ"
@@ -40,7 +40,7 @@ const Typeform = (props) => {
             {typ + '\n'}
           </div>
         </div>
-      </form>
+</form>
     </div>
   )
 }

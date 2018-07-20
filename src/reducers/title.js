@@ -1,7 +1,7 @@
-const titleReducer = (state = {title: []}, action) => {
+const titleReducer = (state = '', action) => {
   switch (action.type) {
     case 'UPDATE_TITLE':
-      return {...state, title: action.titleValue}
+      return action.title;
     default:
       return state;
   }

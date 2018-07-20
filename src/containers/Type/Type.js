@@ -14,8 +14,8 @@ const {titleChange, typChange, title, typ} = props;
 
 const mapStateToProps = state => {
   return {
-    title: state.titleReducer.title,
-    typ: state.typReducer.typ
+    title: state.titleReducer,
+    typ: state.typReducer
   }
 };
 
