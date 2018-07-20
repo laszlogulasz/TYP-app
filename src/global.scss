@@ -20,11 +20,6 @@ $darkgray: #4f4f4f;
   border: 1px solid $color;
 }
 
-@import './typ';
-@import './components/Explore/Explore';
-@import './components/Type/Type';
-@import './components/Me/Me';
-
 /*-- FONTS --*/
 h1 {
   padding: 15px 0 5px;

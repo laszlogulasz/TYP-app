@@ -1,9 +1,9 @@
-export const onTitleChange = title => ({
+export const titleChange = title => ({
   type: 'UPDATE_TITLE',
-  titleData: title
+  titleValue: title
 })
 
-export const onTypChange = typ => ({
+export const typChange = typ => ({
   type: 'UPDATE_TYP',
-  typData: typ
+  typValue: typ
 })

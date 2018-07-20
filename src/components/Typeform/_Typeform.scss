@@ -1,0 +1,60 @@
+h2 {
+  width: 100%;
+}
+
+.typeform {
+  align-items: center;
+  background-color: $white;
+  padding: 15px 15px 10px;
+  margin: 10px;
+  @include border($lightgray);
+  border-radius: 5px;
+  box-shadow: 0 0 3px 1px rgba(200,200,200,1);
+
+  .tape__container {
+    position: relative;
+    width: 320px;
+  }
+
+  .type__content, .type__containter--resize {
+    overflow: hidden;
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    padding: 5px;
+    border: none;
+  }
+
+  .type__content {
+    height: 100%;
+    position: absolute;
+    resize: none;
+    white-space: normal;
+    color: $darkgray;
+  }
+
+  .type__containter--resize {
+    visibility: hidden;
+    white-space: pre-wrap;
+  }
+
+  .type__content--title {
+    min-height: 50px;
+    margin-bottom: 15px;
+    font: 500 1.5em chaparral-pro;
+  }
+
+  .type__content--typ {
+    min-height: 360px;
+    font: 300 1em/1.5em museo-slab;
+  }
+
+  .type__content:focus {
+    outline:1px solid $lightgray;
+    box-shadow: none;
+  }
+  
+  .type__content::placeholder {
+    color: $lightgray;
+  }
+}

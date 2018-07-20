@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Explore from './components/Explore';
 import Footer from './components/Footer';
 import Me from './components/Me';
-import Type from './components/Type';
+import Type from './containers/Type/Type';
 import Logout from './components/Logout/Logout.js';
 import {fire, fbProvider} from './fire';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
@@ -41,7 +41,7 @@ export default class App extends React.Component {
       <div className="container">
         <Header logged={this.state.logged} />
         <Switch>
-          <Route exact path='/' component={Explore} />
+          <Route exact path='/' component={Type} />
           <Route path='/me' component={Me} />
           <Route path='/type'component={Type} />
           <Route path='/logout' component={Logout} />

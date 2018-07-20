@@ -1,7 +1,7 @@
 const typReducer = (state = {typ: []}, action) => {
   switch (action.type) {
     case 'UPDATE_TYP':
-      return {...state, typ: action.typData}
+      return {...state, typ: action.typValue}
     default:
       return state;
   }
