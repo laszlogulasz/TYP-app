@@ -1,21 +1,36 @@
 /*------------------style TYPa----------------------*/
-.style1 {
-  h3 {
-    font: 500 1.6em museo-slab;
-  }
 
-  p {
-    font: 300 1em/1.4em source-serif-pro;
+.globaltyp {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  div:first-child > textarea, div:first-child > textarea + div, h3 {
+    min-height: 50px;
+    margin-bottom: 15px;
+    color: $darkgray;
+    padding: 5px;
+  }
+  div:last-child > textarea, div:last-child > textarea + div, p, .typ {
+    color: $darkgray;
+    padding: 5px;
+  }
+}
+.style1 {
+  div:first-child > textarea, div:first-child > textarea + div, h3 {
+    font: 500 1.6em chaparral-pro;
+  }
+  div:last-child > textarea, div:last-child > textarea + div, p, .typ {
+    font: 300 1.2em/1em mr-eaves-modern;
   }
 }
 
 .style2 {
-  h3 {
-    font: 500 1.6em chaparral-pro;
+  div:first-child > textarea, div:first-child > textarea + div, h3 {
+    font: 500 1.6em museo-slab;
   }
 
-  p {
-    font: 300 1.2em/1em mr-eaves-modern;
+  div:last-child > textarea, div:last-child > textarea + div, p, .typ {
+    font: 300 1em/1.4em source-serif-pro;
   }
 }
 

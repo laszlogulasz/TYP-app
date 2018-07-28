@@ -1,8 +1,9 @@
-import React from "react";
+import React from 'react';
 
 const Typeform = (props) => {
-
-  const {titleChange, typChange, title, typ} = props;
+  const {
+    titleChange, typChange, title, typ, typFilter,
+  } = props;
 
   const handleTitleChange = (e) => {
     titleChange(e.target.value);
@@ -13,14 +14,16 @@ const Typeform = (props) => {
     typChange(e.target.value);
   };
   return (
-    <div className="me">
-      <h1>Type your TYP :)</h1>
-      <form className="typeform">
+    <section className="content__box">
+      <h1>
+        Type your TYP :)
+      </h1>
+      <form className={`typeform globaltyp ${typFilter}`}>
         <div className="type__container">
           <textarea
             className="type__content type__content--title"
             name="title"
-            placeholder='Add title here'
+            placeholder="your great title"
             onChange={handleTitleChange}
             value={title}
           />
@@ -32,7 +35,7 @@ const Typeform = (props) => {
           <textarea
             className="type__content type__content--typ"
             name="typ"
-            placeholder='TYPe your thoughts ;)'
+            placeholder="TYPe your thoughts ;)"
             onChange={handleTypChange}
             value={typ}
           />
@@ -40,9 +43,9 @@ const Typeform = (props) => {
             {typ + '\n'}
           </div>
         </div>
-</form>
-    </div>
-  )
-}
+      </form>
+    </section>
+  );
+};
 
 export default Typeform;

@@ -5,6 +5,6 @@ const titleReducer = (state = '', action) => {
     default:
       return state;
   }
-}
+};
 
 export default titleReducer;

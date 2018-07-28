@@ -42,10 +42,6 @@ h1 {
   background-clip: text;
   font: 800 1.8em futura-pt;
 }
-
-.post__more--elem {
-  font: 500 1.2em futura-pt;
-}
 /*-- RESET --*/
 * {
   margin: 0;
@@ -60,7 +56,14 @@ body {
   height: 100vh;
   background: radial-gradient(rgba(255, 255, 255, 1) 30%, rgba(200, 200, 200, 1) 100%);
 }
-
+.content__box {
+  display: flex;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
   img {
     box-shadow: 0 0 1px 1px rgba(200,200,200,1);
     border-radius: 50%;

@@ -5,6 +5,6 @@ const typReducer = (state = '', action) => {
     default:
       return state;
   }
-}
+};
 
 export default typReducer;

@@ -1,2 +1,3 @@
-import Typeform from './Typeform.js';
+import Typeform from './Typeform';
+
 export default Typeform;

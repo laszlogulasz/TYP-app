@@ -1,8 +1,11 @@
 @import url("https://use.typekit.net/flp6bzj.css");
-@import './typ';
 @import './global';
+@import './typ';
+@import './components/Me/Me';
 @import './components/Explore/Explore';
+@import './components/Draft/Draft';
+@import './components/Filters/Filters';
+@import './components/Filter/Filter';
 @import './components/Footer/Footer';
 @import './components/Header/Header';
 @import './components/Typeform/Typeform';
-@import './components/Me/Me';

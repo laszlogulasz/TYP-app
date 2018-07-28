@@ -1,27 +1,31 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
-import {fire} from './../../fire';
+import { Redirect } from 'react-router-dom';
+import { fire } from '../../fire';
 
 export default class Logout extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      redirect: false
-    }
+      redirect: false,
+    };
   }
 
   componentWillMount() {
-    fire.auth().signOut().then((user, error) => {
-      this.setState({ redirect: true })
+    fire.auth().signOut().then(() => {
+      this.setState({ redirect: true });
     });
   }
 
   render() {
-    if (this.state.redirect === true) { return <Redirect to="/" />}
+    const { redirect } = this.state;
+
+    if (redirect === true) { return <Redirect to="/" />; }
     return (
       <div>
-        <h3>Logging Out</h3>
+        <h3>
+          Logging Out
+        </h3>
       </div>
-    )
+    );
   }
 }

@@ -1,3 +1,5 @@
 .draft {
   @include post();
+  width: 352px;
+  min-height: 200px;
 }

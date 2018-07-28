@@ -7,7 +7,7 @@ h2 {
 
   .type__container {
     position: relative;
-    width: 320px;
+    min-width: 320px;
   }
 
   .type__content, .type__containter--resize {
@@ -39,7 +39,7 @@ h2 {
   }
 
   .type__content--typ {
-    min-height: 360px;
+    min-height: 240px;
     font: 300 1em/1.5em museo-slab;
   }
 
