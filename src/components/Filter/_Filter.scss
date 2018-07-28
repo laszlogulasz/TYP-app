@@ -1,0 +1,7 @@
+.filter__box {
+  @include post();
+  width: 100px;
+  height: 100px;
+  list-style: none;
+  display: flex;
+}
