@@ -42,9 +42,9 @@ export default class Explore extends React.Component {
       />));
     return (
       <section className="explore">
-        <h1>
-Enjoy the latest TYPs
-        </h1>
+        <h2>
+          Enjoy the latest TYPs
+        </h2>
         {postsList}
       </section>
     );

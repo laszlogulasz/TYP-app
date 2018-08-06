@@ -1,4 +1,4 @@
-footer {
+.footer {
   background-color: $white;
   width: 100%;
   min-height: 60px;
@@ -8,7 +8,7 @@ footer {
   border-top: 1px solid $lightgray;
   box-shadow: 0 0 2px 1px rgba(0,0,0,0.25);
 
-  .footer--button {
+  .footer__button {
     @include button(80px);
   }
 
@@ -18,15 +18,4 @@ footer {
     color: $lightgray;
     cursor: default;
   }
-}
-
-.outer:active > .inner {
-box-shadow: none;
-}
-.outer:focus > .inner {
-box-shadow: 0 0 0 3px $darkgray;
-}
-
-.outer, .inner {
-outline: none;
 }

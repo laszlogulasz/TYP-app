@@ -1,5 +1,6 @@
 .draft {
   @include post();
   width: 352px;
-  min-height: 200px;
+  height: 322px;
+  overflow: hidden;
 }

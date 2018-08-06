@@ -1,9 +1,10 @@
 /*-- COLORS --*/
 $background: #f0f0f0;
 $white: #fff;
-$lightgray: #BCBCBC;
-$gray: #7d7d7d;
-$darkgray: #4f4f4f;
+$lightlightgray: hsl(0, 0%, 90%);
+$lightgray: hsl(0, 0%, 70%);
+$gray: hsl(0, 0%, 50%);
+$darkgray: hsl(0, 0%, 30%);
 /*-- MIXINS --*/
 @mixin button($width) {
   width: $width;
@@ -26,11 +27,11 @@ $darkgray: #4f4f4f;
   margin: 10px;
   @include border($lightgray);
   border-radius: 5px;
-  box-shadow: 0 0 3px 1px rgba(200,200,200,1);
+  box-shadow: 0 0 1px 0 rgba(200,200,200,1);
 }
 
 /*-- FONTS --*/
-h1 {
+h2 {
   padding: 15px 0 5px;
   width: 100%;
   text-align: center;
@@ -41,6 +42,10 @@ h1 {
   -moz-background-clip: text;
   background-clip: text;
   font: 800 1.8em futura-pt;
+}
+h4 {
+  font: 300 1em futura-pt;
+  color: $darkgray;
 }
 /*-- RESET --*/
 * {
@@ -63,6 +68,9 @@ body {
   width: 100%;
   flex-direction: column;
   align-items: center;
+  &--between {
+    justify-content: space-between;
+  }
 }
   img {
     box-shadow: 0 0 1px 1px rgba(200,200,200,1);
@@ -77,13 +85,23 @@ body {
   justify-content: center;
   align-items: center;
   @include border($lightgray);
-  border-radius: 15px;
+  border-radius: 30px;
   box-shadow: 0 0 1px 1px rgba(200,200,200,1);
   flex-flow: column;
   max-height: 100%;
   overflow: auto;
 
-  .button--link {
+  .button__link {
     text-decoration: none;
+  }
+  .outer:active > .inner {
+  box-shadow: none;
+  }
+  .outer:focus > .inner {
+  box-shadow: 0 0 0 4px $darkgray;
+  }
+
+  .outer, .inner {
+  outline: none;
   }
 }

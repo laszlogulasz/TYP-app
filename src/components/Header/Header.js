@@ -23,11 +23,16 @@ const Header = (props) => {
   // ukryj przycisk logout jeśli user jest niezalogowany
   const logout = (
     <Link
-      className={`button--link outer ${!logged ? 'none' : null}`}
+      className={`button__link outer ${!logged ? 'none' : ''}`}
       to="/logout"
     >
-      <button className="header--button inner" type="button">
-LOG OUT
+      <button
+        className="header__button inner"
+        name="log out"
+        type="button"
+        tabIndex="-1"
+      >
+        LOG OUT
       </button>
     </Link>
   );
@@ -35,18 +40,18 @@ LOG OUT
   const login = logged
     ? (
       <Link
-        className="button--link outer"
+        className="button__link outer"
         to="/me"
       >
-        <button className="header--button inner" tabIndex="-1" type="button">
-ME
+        <button className="header__button inner" tabIndex="-1" type="button">
+          ME
         </button>
       </Link>
     )
     : (
       <span className="outer">
         <button
-          className="header--button inner"
+          className="header__button inner"
           onClick={() => { fbAuth(); }}
           type="button"
         >
@@ -57,15 +62,9 @@ ME
 
   return (
     <header id="header">
-      <div className="eq">
-        {logout}
-      </div>
-      <div className="eq">
-        {logo}
-      </div>
-      <div className="eq">
-        {login}
-      </div>
+      {logout}
+      {logo}
+      {login}
     </header>
   );
 };

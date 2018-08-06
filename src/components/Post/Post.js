@@ -2,11 +2,11 @@ import React from 'react';
 
 const Post = (props) => {
   const {
-    id, user, title, desc,
+    id, user, title, desc, typFilter,
   } = props;
   return (
     <div className="post">
-      <div className={`post__data style${id}`}>
+      <div className={`post__data ${typFilter}`}>
         <h4>
           {user}
         </h4>

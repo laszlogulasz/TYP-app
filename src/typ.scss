@@ -4,6 +4,9 @@
   white-space: pre-wrap;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  &--inset {
+    box-shadow: inset 0 -10px 10px -10px #fff;
+  }
   div:first-child > textarea, div:first-child > textarea + div, h3 {
     min-height: 50px;
     margin-bottom: 15px;
@@ -15,7 +18,17 @@
     padding: 5px;
   }
 }
-.style1 {
+
+.none {
+  div:first-child > textarea, div:first-child > textarea + div, h3 {
+    font: 500 1.6em "helvetica neue", arial;
+  }
+  div:last-child > textarea, div:last-child > textarea + div, p, .typ {
+    font: 300 1em "helvetica neue", arial;
+  }
+}
+
+.fancy {
   div:first-child > textarea, div:first-child > textarea + div, h3 {
     font: 500 1.6em chaparral-pro;
   }
@@ -24,7 +37,7 @@
   }
 }
 
-.style2 {
+.stickler {
   div:first-child > textarea, div:first-child > textarea + div, h3 {
     font: 500 1.6em museo-slab;
   }
@@ -34,32 +47,46 @@
   }
 }
 
-.style3 {
-  h3 {
+.epic {
+  div:first-child > textarea, div:first-child > textarea + div, h3 {
     font: 500 1.4em trajan-pro-3;
   }
 
-  p {
+  div:last-child > textarea, div:last-child > textarea + div, p, .typ {
     font: 300 1em/1.4em omnes-pro;
   }
 }
 
-.style4 {
-  h3 {
+.marvell {
+  div:first-child > textarea, div:first-child > textarea + div, h3 {
     font: 700 1.6em omnes-pro;
   }
 
-  p {
+  div:last-child > textarea, div:last-child > textarea + div, p, .typ {
     font: 300 1em/1.5em malaga;
   }
 }
 
-.style5 {
-  h3 {
+.orbital {
+  div:first-child > textarea, div:first-child > textarea + div, h3 {
     font: 800 1.5em futura-pt;
   }
 
-  p {
+  div:last-child > textarea, div:last-child > textarea + div, p, .typ {
     font: 300 1em/1.5em museo-slab;
   }
+}
+
+.janus {
+  div:first-child > textarea, div:first-child > textarea + div, h3 {
+    font: 800 1.5em "comic sans MS";
+  }
+
+  div:last-child > textarea, div:last-child > textarea + div, p, .typ {
+    font: 300 1em/1.5em courier;
+  }
+}
+
+.inset {
+  box-shadow: inset 0 -10px 10px -10px #fff;
 }

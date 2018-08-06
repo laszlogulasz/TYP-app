@@ -1,7 +1,30 @@
-.filter__box {
-  @include post();
-  width: 100px;
-  height: 100px;
-  list-style: none;
-  display: flex;
+.filter {
+  .filter__box {
+    @include post();
+    box-shadow: 0 0 4px 1px rgba(200,200,200,1);
+    min-width: 100px;
+    height: 95px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: flex-start;
+    margin: 5px 10px 15px 10px;
+    &:focus, &:active {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  .filter__name {
+    padding-left: 15px;
+    color: $gray;
+
+  }
+  .active {
+    box-shadow: none;
+    outline: none;
+    color: $darkgray;
+    font: 400 1em futura-pt;
+  }
 }

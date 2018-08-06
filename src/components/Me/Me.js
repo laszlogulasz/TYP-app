@@ -2,9 +2,9 @@ import React from 'react';
 
 const Me = () => (
   <section className="me">
-    <h1>
+    <h2>
       Your recent TYPs
-    </h1>
+    </h2>
   </section>
 );
 

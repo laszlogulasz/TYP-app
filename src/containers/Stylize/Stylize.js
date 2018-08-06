@@ -10,7 +10,7 @@ const Stylize = (props) => {
   } = props;
 
   return (
-    <section className="content__box">
+    <section className="content__box content__box--between">
       <Draft title={title} typ={typ} typFilter={typFilter} />
       <Filters typFilter={typFilter} filterSwitch={filterSwitch} />
     </section>

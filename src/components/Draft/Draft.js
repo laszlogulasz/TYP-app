@@ -4,11 +4,11 @@ const Draft = (props) => {
   const { title, typ, typFilter } = props;
 
   return (
-    <div className="me">
-      <h1>
-Style your TYP :)
-      </h1>
-      <article className={`draft globaltyp ${typFilter}`}>
+    <section className="draft__box">
+      <h2>
+        Choose the perfect style!
+      </h2>
+      <article className={`draft globaltyp ${typFilter} inset`}>
         <h3>
           {title}
         </h3>
@@ -16,7 +16,7 @@ Style your TYP :)
           {typ}
         </p>
       </article>
-    </div>
+    </section>
   );
 };
 

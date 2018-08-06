@@ -5,28 +5,30 @@ const Footer = (props) => {
   const { logged } = props;
 
   return (
-    <footer id="footer">
+    <footer className="footer">
       <Link
-        className={`button--link outer ${!logged ? 'inactive' : null}`}
+        className={`button__link outer ${!logged ? 'inactive' : ''}`}
         to="/type"
       >
         <button
           type="button"
           name="Type TYP"
-          className={`footer--button inner ${!logged ? 'inactive' : null}`}
+          className={`footer__button inner ${!logged ? 'inactive' : ''}`}
           disabled={!logged}
+          tabIndex="-1"
         >
           Type TYP
         </button>
       </Link>
       <Link
-        className="button--link outer"
+        className="button__link outer"
         to="/stylize"
       >
         <button
           type="button"
           name="Type TYP"
-          className="footer--button inner"
+          className="footer__button inner"
+          tabIndex="-1"
         >
           Stylize TYP
         </button>

@@ -15,9 +15,9 @@ const Typeform = (props) => {
   };
   return (
     <section className="content__box">
-      <h1>
+      <h2>
         Type your TYP :)
-      </h1>
+      </h2>
       <form className={`typeform globaltyp ${typFilter}`}>
         <div className="type__container">
           <textarea

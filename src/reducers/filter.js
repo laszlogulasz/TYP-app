@@ -1,4 +1,4 @@
-const filterReducer = (state = 'style1', action) => {
+const filterReducer = (state = 'none', action) => {
   switch (action.type) {
     case 'SWITCH_FILTER':
       console.log(action.typFilter);
