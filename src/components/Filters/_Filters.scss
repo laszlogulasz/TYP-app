@@ -1,8 +1,12 @@
 .filters {
+
   .filters__list {
     list-style: none;
-    display: inline;
+    width: 350px;
+    overflow-x: auto;
     display: flex;
     flex-direction: row;
+    flex: 1;
+    height: 145px;
   }
 }

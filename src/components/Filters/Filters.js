@@ -2,13 +2,14 @@ import React from 'react';
 import Filter from '../Filter/Filter';
 
 const Filters = (props) => {
-  const { filterSwitch } = props;
-  const stylelist = ['style1', 'style2', 'style3', 'style4', 'style5'];
+  const { filterSwitch, typFilter } = props;
+  const stylelist = ['none', 'fancy', 'stickler', 'epic', 'marvell', 'orbital', 'janus'];
   const filterList = stylelist.map(typStyle => (
     <Filter
       key={typStyle}
       id={typStyle}
       filterSwitch={filterSwitch}
+      typFilter={typFilter}
     />
   ));
 
