@@ -3,7 +3,7 @@
 
   .type__container {
     position: relative;
-    min-width: 320px;
+    width: 303px;
   }
 
   .type__content, .type__containter--resize {
@@ -30,7 +30,7 @@
   }
 
   .type__content--title {
-    min-height: 50px;
+    min-height: 40px;
     margin-bottom: 15px;
   }
 

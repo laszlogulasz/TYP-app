@@ -11,11 +11,6 @@ const Filter = (props) => {
 
   return (
     <li className="filter">
-      <h4
-        className={id === typFilter ? `filter__name ${id} active` : `filter__name ${id}`}
-      >
-        {id}
-      </h4>
       <div
         className={id === typFilter ? `filter__box ${id} active` : `filter__box ${id}`}
         id={id}
@@ -31,6 +26,11 @@ const Filter = (props) => {
           Article
         </p>
       </div>
+      <h4
+        className={id === typFilter ? `filter__name ${id} active` : `filter__name ${id}`}
+      >
+        {id}
+      </h4>
     </li>
   );
 };

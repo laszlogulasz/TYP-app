@@ -23,7 +23,7 @@ const Typeform = (props) => {
           <textarea
             className="type__content type__content--title"
             name="title"
-            placeholder="your great title"
+            placeholder="Your great title"
             onChange={handleTitleChange}
             value={title}
           />

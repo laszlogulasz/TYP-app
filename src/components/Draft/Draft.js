@@ -8,7 +8,7 @@ const Draft = (props) => {
       <h2>
         Choose the perfect style!
       </h2>
-      <article className={`draft globaltyp ${typFilter} inset`}>
+      <article className={`draft globaltyp ${typFilter} ${typFilter}--inset`}>
         <h3>
           {title}
         </h3>
