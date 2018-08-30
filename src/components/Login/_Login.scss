@@ -1,0 +1,6 @@
+.login {
+  overflow: auto;
+  .login__button {
+    @include button(80px);
+  }
+}

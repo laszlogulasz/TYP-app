@@ -1,8 +1,11 @@
 import React from 'react';
-import { fire } from '../../fire';
+import { fire } from '../../fire/fire';
+import Header from '../Header/Header';
 import Post from '../Post/Post';
+import Loader from '../Loader/Loader';
 
 export default class Explore extends React.Component {
+
   state = {
     posts: false,
   }
@@ -13,40 +16,43 @@ export default class Explore extends React.Component {
 
   getData = () => {
     const films = [];
-    fire
-      .database()
-      .ref('films')
-      .on('value', (snapshot) => {
-        snapshot.forEach((childSnapshot) => {
-          const item = childSnapshot.val();
-          item.key = childSnapshot.key;
-          films.push(item);
-        });
-        this.setState({ posts: films });
+    fire.database().ref('films').on('value', (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        const item = childSnapshot.val();
+        item.key = childSnapshot.key;
+        films.push(item);
+        console.log(item.key);
       });
+      this.setState({ posts: films });
+    });
   };
 
   render() {
     const { posts } = this.state;
     if (!posts) {
-      return null;
-    }
+        return (
+            <Loader />
+        );
+      }
 
     const postsList = posts.map(post => (
       <Post
-        id={post.id}
         key={post.id}
-        user={post.user}
+        user={post.displayName}
         title={post.title}
-        desc={post.desc}
+        desc={post.typ}
+        visible
       />));
     return (
-      <section className="explore">
-        <h2>
-          Enjoy the latest TYPs
-        </h2>
-        {postsList}
-      </section>
+      <React.Fragment>
+        <Header />
+        <section className="explore">
+          <h2>
+            Enjoy the latest TYPs 👍
+          </h2>
+          {postsList}
+        </section>
+      </React.Fragment>
     );
   }
 }

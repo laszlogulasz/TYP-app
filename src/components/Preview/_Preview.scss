@@ -1,4 +1,3 @@
-.review {
-  @include post();
-  width: 335px;
+.preview {
+  overflow: auto;
 }

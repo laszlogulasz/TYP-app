@@ -1,0 +1,57 @@
+.loader {
+  position: relative;
+  @include svg($background);
+  height: 137px;
+  width: 320px;
+
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 137px;
+    width: 320px;
+  }
+
+  &::before {
+    @include svg($lightgray);
+    animation: spring 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+    z-index: -1;
+
+  }
+
+  &::after {
+    @include svg($darkgray);
+    animation: spring-reverse 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+  }
+
+  @keyframes spring {
+    0% {
+      top: 0;
+      left: 0;
+    }
+    50% {
+      top: 8px;
+      left: -8px;
+    }
+    100% {
+      top: 0;
+      left: 0;
+    }
+  }
+
+  @keyframes spring-reverse {
+    0% {
+      top: 0;
+      left: 0;
+    }
+    50% {
+      top: -8px;
+      left: 8px;
+    }
+    100% {
+      top: 0;
+      left: 0;
+    }
+  }
+}

@@ -1,28 +1,43 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import Header from './components/Header';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Explore from './components/Explore';
 import Footer from './components/Footer';
 import Me from './components/Me';
 import Type from './containers/Type/Type';
-import Stylize from './containers/Stylize/Stylize';
+import Loader from './components/Loader/Loader';
+import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout';
-import { fire } from './fire';
+import { loggingSwitch } from './actions';
+import { fire, authRef } from './fire/fire';
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      logged: false,
-      loading: true,
-    };
-  }
+const PrivateRoute = ({ component: Component, logged, ...rest }) => (
+  <Route
+    logged
+    {...rest}
+    render={props => (logged
+      ? <Component {...props} {...rest} />
+      : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />)
+    }
+  />
+);
+
+class App extends React.Component {
+  state = {
+    loading: true,
+    currentUser: null,
+  };
 
   componentWillMount() {
-    this.removeAuthListener = fire.auth().onAuthStateChanged((user) => {
-      user
-        ? (this.setState({ logged: true, loading: false }))
-        : (this.setState({ logged: false, loading: false }));
+    const { loggingSwitch } = this.props;
+    this.removeAuthListener = authRef.onAuthStateChanged((user) => {
+      if (user) {
+        loggingSwitch(true);
+        (this.setState({ loading: false, currentUser: authRef.currentUser }));
+      } else {
+        loggingSwitch(false);
+        (this.setState({ loading: false, currentUser: null }));
+      }
     });
   }
 
@@ -31,29 +46,55 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { loading, logged } = this.state;
-
-    if (loading === true) {
+    const { loading, currentUser } = this.state;
+    const { logged } = this.props;
+    if (loading) {
       return (
-        <div>
-          <h3>
-            loading
-          </h3>
+        <div className="container" style={loading ? { zIndex: '-1' } : { zIndex: '1' }}>
+          <Loader />
+          <Footer logged={logged} />
         </div>
       );
     }
+
     return (
-      <div className="container">
-        <Header logged={logged} />
+      <div className="container" style={loading ? { zIndex: '-1' } : { zIndex: '1' }}>
         <Switch>
-          <Route exact path="/" component={Explore} />
-          <Route path="/me" component={Me} />
-          <Route path="/type" component={Type} />
-          <Route path="/stylize" component={Stylize} />
+          <Route
+            path="/login"
+            render={props => (
+              <Login
+                logged={logged}
+                setCurrentUser={() => this.setCurrentUser}
+                {...props}
+              />
+            )}
+          />
+          <PrivateRoute exact path="/" logged={logged} component={Explore} />
+          <PrivateRoute
+            path="/type"
+            logged={logged}
+            currentUser={currentUser}
+            component={Type}
+          />
+          <PrivateRoute path="/me" logged={logged} component={Me} />
           <Route path="/logout" component={Logout} />
+          <Route render={() => (
+            <h2>
+              404 Error
+            </h2>
+          )}
+          />
         </Switch>
-        <Footer logged={logged} />
+        <Footer logged={logged} currentUser={currentUser}/>
       </div>
     );
   }
 }
+const mapStateToProps = state => ({
+  logged: state.loggingReducer,
+});
+
+const mapDispatchToProps = { loggingSwitch };
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

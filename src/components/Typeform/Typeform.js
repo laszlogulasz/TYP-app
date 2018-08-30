@@ -1,50 +1,45 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Header from '../Header/Header';
+import TextArea from '../TextArea/TextArea';
 
 const Typeform = (props) => {
   const {
-    titleChange, typChange, title, typ, typFilter,
+    titleChange, typChange, title, typ, typFilter, history,
   } = props;
 
-  const handleTitleChange = (e) => {
-    titleChange(e.target.value);
-    console.log(title);
+  const cancel = e => {
+    e.stopPropagation();
+    history.goBack();
+    titleChange('');
+    typChange('');
   };
 
-  const handleTypChange = (e) => {
-    typChange(e.target.value);
-  };
   return (
-    <section className="content__box">
-      <h2>
-        Type your TYP :)
-      </h2>
-      <form className={`typeform globaltyp ${typFilter}`}>
-        <div className="type__container">
-          <textarea
-            className="type__content type__content--title"
-            name="title"
-            placeholder="Your great title"
-            onChange={handleTitleChange}
-            value={title}
+    <React.Fragment>
+      <Header>
+        <p onClick={cancel}>Cancel</p><Link to="/type/stylize" >Stylize</Link>
+      </Header>
+      <section className="content__box">
+        <h2>
+          Type your typ_ :)
+        </h2>
+        <form className={`typeform globaltyp ${typFilter}`}>
+          <TextArea
+            content={title}
+            type={`title`}
+            change={titleChange}
+            placeholder={`Your great title`}
           />
-          <div className="type__containter--resize type__content--title">
-            {title + '\n'}
-          </div>
-        </div>
-        <div className="type__container">
-          <textarea
-            className="type__content type__content--typ"
-            name="typ"
-            placeholder="TYPe your thoughts ;)"
-            onChange={handleTypChange}
-            value={typ}
+          <TextArea
+            content={typ}
+            type={`typ`}
+            change={typChange}
+            placeholder={`Your brilliant toughts`}
           />
-          <div className="type__containter--resize type__content--typ">
-            {typ + '\n'}
-          </div>
-        </div>
-      </form>
-    </section>
+        </form>
+      </section>
+    </React.Fragment>
   );
 };
 

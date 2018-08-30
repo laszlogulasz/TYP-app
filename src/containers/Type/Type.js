@@ -1,31 +1,67 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { titleChange, typChange } from '../../actions';
+import { Route } from 'react-router-dom';
+import { titleChange, typChange, filterSwitch, typReset } from '../../actions';
 import Typeform from '../../components/Typeform';
+import Stylize from '../../components/Stylize';
+import Preview from '../../components/Preview';
 
 
 const Type = (props) => {
   const {
-    titleChange, typChange, title, typ, typFilter,
+    titleChange, typChange, title, typ, typFilter, filterSwitch, typReset, currentUser,
   } = props;
 
   return (
-    <Typeform
-      titleChange={titleChange}
-      typChange={typChange}
-      title={title}
-      typ={typ}
-      typFilter={typFilter}
-    />
+    <React.Fragment>
+      <Route
+        exact
+        path="/type"
+        render={props => (
+          <Typeform
+            titleChange={titleChange}
+            typChange={typChange}
+            title={title}
+            typ={typ}
+            typFilter={typFilter}
+            {...props}
+          />)}
+      />
+      <Route
+        exact
+        path="/type/stylize"
+        render={props => (
+          <Stylize
+            title={title}
+            typ={typ}
+            typFilter={typFilter}
+            filterSwitch={filterSwitch}
+            {...props}
+          />)}
+      />
+      <Route
+        exact
+        path="/type/preview"
+        render={props => (
+          <Preview
+            title={title}
+            desc={typ}
+            typFilter={typFilter}
+            typReset={typReset}
+            user={currentUser}
+            {...props}
+          />)}
+      />
+    </React.Fragment>
   );
 };
 
 const mapStateToProps = state => ({
-  title: state.titleReducer,
-  typ: state.typReducer,
-  typFilter: state.filterReducer,
+  title: state.typReducer.title,
+  typ: state.typReducer.typ,
+  typFilter: state.filterReducer.filter,
 });
 
-const mapDispatchToProps = { titleChange, typChange };
+const mapDispatchToProps = { titleChange, typChange, filterSwitch, typReset };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Type);

@@ -8,11 +8,11 @@
   div:first-child > textarea, div:first-child > textarea + div, h3 {
     min-height: 40px;
     margin-bottom: 15px;
-    color: $darkgray;
+
     padding: 5px;
   }
   div:last-child > textarea, div:last-child > textarea + div, p, .typ {
-    color: $darkgray;
+
     padding: 5px;
   }
 }
@@ -51,7 +51,7 @@
     font: 500 1.6em chaparral-pro;
   }
   div:last-child > textarea, div:last-child > textarea + div, p, .typ {
-    font: 300 1.2em/1em mr-eaves-modern;
+    font: 400 1.2em/1em mr-proxima-nova;
   }
 }
 

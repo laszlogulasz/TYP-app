@@ -1,12 +1,66 @@
 .footer {
   background-color: $white;
   width: 100%;
-  min-height: 60px;
+  min-height: 88px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   border-top: 1px solid $lightgray;
   box-shadow: 0 0 2px 1px rgba(0,0,0,0.25);
+  font-size: 28px;
+
+  .fas {
+    background-color: $darkgray;
+    color: transparent;
+    text-align: center;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.2);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    width: 32px;
+  }
+
+  .fas, .profileImage {
+    margin: 0 25px 15px 25px;
+  }
+    .shadow {
+      display: inline-block;
+      position: relative;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      box-sizing: border-box;
+      box-shadow: rgba(0, 0, 0, 0.8) 3px 3px 10px inset;
+      .profileImage {
+        position: relative;
+        box-sizing: border-box;
+        width: 28px;
+        height: 28px;
+        z-index: -1;
+        border-radius: 50%;
+      }
+    }
+    .column {
+      float: left;
+      width: 25%;
+      padding: 0 15px;
+    }
+
+
+  // .profileImage::after {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 28px;
+  //   height: 28px;
+  //   border: 1px solid black;
+  //   box-shadow: 2px 2px 2px 2px $darkgray;
+  // }
+
+  .current > * {
+    color: $darkgray;
+  }
 
   .footer__button {
     @include button(80px);
@@ -17,5 +71,12 @@
     border-color: $lightgray;
     color: $lightgray;
     cursor: default;
+  }
+
+  .last {
+    padding-top: 10px;
+    float: left;
+  width: 25%;
+  padding: 0 15px;
   }
 }

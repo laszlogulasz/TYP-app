@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { fire } from '../../fire';
+import { fire } from '../../fire/fire';
 
 export default class Logout extends React.Component {
   constructor() {

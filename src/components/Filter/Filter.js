@@ -5,8 +5,8 @@ const Filter = (props) => {
     typFilter, id, filterSwitch,
   } = props;
   const handleFilterSwitch = e => {
-    console.log(typFilter, id);
-    return filterSwitch(e.currentTarget.id);
+    console.log(typFilter, id, filterSwitch);
+    filterSwitch(e.currentTarget.id);
   };
 
   return (

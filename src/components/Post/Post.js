@@ -2,11 +2,11 @@ import React from 'react';
 
 const Post = (props) => {
   const {
-    id, user, title, desc, typFilter,
+    user, title, desc, typFilter, visible,
   } = props;
   return (
     <div className="post">
-      <div className={`post__data ${typFilter}`}>
+      <article className={`post__data globaltyp ${typFilter}`}>
         <h4>
           {user}
         </h4>
@@ -17,13 +17,13 @@ const Post = (props) => {
         <p>
           {desc}
         </p>
-      </div>
-      <ul className="post__more--list">
-        <li className="post__more--elem">
-          READ MORE...
+      </article>
+      <ul className={visible ? "post__list post__list--visible" : "post__list"}>
+        <li className="post__list__elem">
+          Read more...
         </li>
-        <li className="post__more--elem">
-          SHARE
+        <li className="post__list__elem">
+          Share
         </li>
       </ul>
     </div>

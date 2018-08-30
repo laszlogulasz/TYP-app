@@ -18,8 +18,22 @@ module.exports = {
                 use: 'eslint-loader'
                 },
                 {
+                  test: /\.svg(\?.*)?$/,
+                  use: [
+                    'url-loader',
+                    'svg-transform-loader'
+                  ]
+                },
+                {
                     test: /\.scss$/,
-                    use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+                    use: [MiniCssExtractPlugin.loader,
+                          {
+                            loader: "css-loader",
+                            options: {
+                              importLoaders: 1
+                    }
+                  },
+                    'svg-transform-loader/encode-query', "sass-loader"]
                 },
                 {
                 test: /\.(js|jsx)$/,

@@ -1,5 +1,5 @@
 /*-- COLORS --*/
-$background: #f0f0f0;
+$background: hsl(0, 0%, 95%);
 $white: #fff;
 $lightlightgray: hsl(0, 0%, 90%);
 $lightgray: hsl(0, 0%, 70%);
@@ -25,14 +25,17 @@ $darkgray: hsl(0, 0%, 30%);
   background-color: $white;
   padding: 15px 15px 10px;
   margin: 10px 15px;
-  @include border($lightgray);
-  border-radius: 5px;
+  @include border($lightlightgray);
+  border-radius: 2px;
   // box-shadow: 0 0 1px 0 rgba(200,200,200,1);
+}
+@mixin svg($color) {
+  background: url('../assets/images/typ-shape.svg?fill=#{$color}');
 }
 
 /*-- FONTS --*/
 h2 {
-  padding: 15px 0 5px;
+  padding: 25px 0 15px 0;
   width: 100%;
   text-align: center;
   background-color: $lightgray;
@@ -41,11 +44,12 @@ h2 {
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
-  font: 800 1.8em futura-pt;
+  font: 800 1.8em proxima-nova;
 }
 h4 {
-  font: 300 1em futura-pt;
+  font: 100 0.8em proxima-nova;
   color: $darkgray;
+  font-style: italic;
 }
 /*-- RESET --*/
 * {
@@ -59,7 +63,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: radial-gradient(rgba(255, 255, 255, 1) 30%, rgba(200, 200, 200, 1) 100%);
+  background: radial-gradient(rgba(255, 255, 255, 1) 40%, rgba(200, 200, 200, 1) 100%);
 }
 .content__box {
   display: flex;
@@ -72,36 +76,33 @@ body {
     justify-content: space-between;
   }
 }
-  img {
-    box-shadow: 0 0 1px 1px rgba(200,200,200,1);
-    border-radius: 50%;
-  }
 
 .container {
+  position: relative;
   display: flex;
   background-color: $background;
   width: 375px;
-  height: 667px;
-  justify-content: center;
+  height: 812px;
+  justify-content: space-between;
   align-items: center;
   @include border($lightgray);
   border-radius: 30px;
   box-shadow: 0 0 1px 1px rgba(200,200,200,1);
-  flex-flow: column;
-  max-height: 100%;
+  flex-direction: column;
+  min-height: 812px;
   overflow: auto;
 
   .button__link {
     text-decoration: none;
   }
-  .outer:active > .inner {
-  box-shadow: none;
-  }
-  .outer:focus > .inner {
-  box-shadow: 0 0 0 4px $darkgray;
-  }
-
-  .outer, .inner {
-  outline: none;
-  }
+  // .outer:active > .inner {
+  // box-shadow: none;
+  // }
+  // .outer:focus > .inner {
+  // box-shadow: 0 0 0 4px $darkgray;
+  // }
+  //
+  // .outer, .inner {
+  // outline: none;
+  // }
 }

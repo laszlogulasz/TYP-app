@@ -12,3 +12,12 @@ export const filterSwitch = typFilter => ({
   type: 'SWITCH_FILTER',
   typFilter,
 });
+
+export const loggingSwitch = logged => ({
+  type: 'SWITCH_LOGGING',
+  logged,
+});
+
+export const typReset = () => ({
+    type: 'RESET_TYP'
+});

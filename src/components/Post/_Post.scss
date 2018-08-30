@@ -29,16 +29,23 @@
       color: $darkgray;
     }
   }
-  .post__more--list {
+  .post__list {
     list-style: none;
     border-top: 1px solid $lightgray;
     padding-top: 10px;
+    display: none;
 
-    .post__more--elem {
-      font: 500 1.2em futura-pt;
+    &__elem {
+      font: 700 1.1em proxima-nova;
       display: inline;
       padding-right: 30px;
       color: $darkgray;
+    }
+    &__elem:hover {
+      text-decoration: underline;
+    }
+    &--visible {
+      display: block;
     }
   }
 }
