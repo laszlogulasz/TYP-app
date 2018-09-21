@@ -6,9 +6,12 @@ const Draft = (props) => {
   return (
     <section className="draft__box">
       <h2>
-        Choose the perfect style!
+        Choose your style &nbsp;
+        <span role="img" aria-label="dancers">
+        💃🕺
+        </span>
       </h2>
-      <article className={`draft globaltyp ${typFilter} ${typFilter}--inset`}>
+      <article className={`draft globaltyp globaltyp--inset ${typFilter}`}>
         <h3>
           {title}
         </h3>

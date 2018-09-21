@@ -1,49 +1,57 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { typRef, time } from '../../fire/fire';
+import { Link, Redirect } from 'react-router-dom';
 import Header from '../Header/Header';
 import Post from '../Post/Post';
+import Button from '../Button/Button';
 
 const Preview = (props) => {
   const {
-    user, title, desc, typFilter, typReset, history,
+    user, title, typ, typFilter, typReset, history, match,
   } = props;
 
-  const back = e => {
-    e.stopPropagation();
-    history.goBack();
+  const handleSubmit = () => {
+    typRef
+      .push()
+      .set({
+        title,
+        typ: typ,
+        uid: user.providerData[0].uid,
+        filter: typFilter,
+        userName: user.displayName,
+        startedAt: time,
+      });
+    typReset();
+    history.replace('/');
   };
 
-  const handleSubmit = e => {
-    typRef
-    .push()
-    .set({
-      title: title,
-      typ: desc,
-      filter: typFilter,
-      user: user.uid,
-      userName: user.displayName,
-      startedAt: time,
-    });
-    typReset();
-    history.push('/');
+  if (typ === '' && title === '') {
+    return <Redirect to='/' />;
   }
-
   return (
     <React.Fragment>
       <Header>
-        <p onClick={back}>back</p>
-        <button to="/" onClick={handleSubmit}>Publish</button>
+        <li className="header__nav__elem">
+          <Button to="/type/stylize">Back</Button>
+        </li>
+        <li className="header__nav__elem">
+          <Button onClick={handleSubmit}>Publish</Button>
+        </li>
       </Header>
-      <section className="preview">
+      <section className="preview content__box">
         <h2>
-          Ready to publish?
+          Ready to go? &nbsp;
+            <span role="img" aria-label="rocket">
+            🚀
+            </span>
         </h2>
         <Post
+          uid={user.providerData[0].uid}
           user={user.displayName}
           title={title}
-          desc={desc}
+          typ={typ}
           typFilter={typFilter}
+          url={match.url}
         />
       </section>
     </React.Fragment>

@@ -19,5 +19,5 @@ export const loggingSwitch = logged => ({
 });
 
 export const typReset = () => ({
-    type: 'RESET_TYP'
+  type: 'RESET_TYP',
 });

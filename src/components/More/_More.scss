@@ -1,0 +1,30 @@
+.more {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 1px solid $lightlightgray;
+  padding-top: 10px;
+  &--right {
+  flex-direction: row-reverse;
+  }
+  &__elem > * {
+    font: 500 1em proxima-nova;
+    color: $gray;
+    text-decoration: underline;
+    border: none;
+    background: none;
+    cursor: pointer;
+    &:last-child > * {
+      text-align: right;
+    }
+    .fas {
+      font-size: 28px;
+      width: 43px;
+      align-self: center;
+    }
+  }
+  &__elem:hover > * {
+    color: $darkgray;
+  }
+}

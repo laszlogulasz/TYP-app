@@ -1,33 +1,62 @@
 import React from 'react';
+import Avatar from '../Avatar/Avatar';
+import More from '../More/More';
 
-const Post = (props) => {
-  const {
-    user, title, desc, typFilter, visible,
-  } = props;
-  return (
-    <div className="post">
-      <article className={`post__data globaltyp ${typFilter}`}>
-        <h4>
-          {user}
-        </h4>
-        <i className="far fa-user fa-2x" aria-hidden="true" />
-        <h3>
-          {title}
-        </h3>
-        <p>
-          {desc}
-        </p>
-      </article>
-      <ul className={visible ? "post__list post__list--visible" : "post__list"}>
-        <li className="post__list__elem">
-          Read more...
-        </li>
-        <li className="post__list__elem">
-          Share
-        </li>
-      </ul>
-    </div>
-  );
-};
+export default class Post extends React.Component {
+  state = {
+    height: 0,
+    isExtended: false,
+  }
 
-export default Post;
+  componentDidMount() {
+    this.setState({ height: this.article.clientHeight });
+  }
+
+  handleExtend = () => {
+    this.setState(state => ({ isExtended: !state.isExtended }));
+  }
+
+  render() {
+    const { height, isExtended } = this.state;
+    const {
+      user, uid, title, typ, typFilter, visible, id, self, url,
+    } = this.props;
+
+    const isPreview = url === '/type/preview';
+    const toExtend = height > 200 && !isPreview;
+    const isMe = url ==='/me';
+
+    return (
+      <div className="post">
+        <article
+          className={
+            `post__data
+            globaltyp ${typFilter}
+            ${((toExtend && !isExtended) && !isPreview) && 'globaltyp--inset'}`
+          }
+          ref={(e) => { this.article = e; }}
+        >
+          <Avatar uid={uid} user={user} />
+          <h4>
+            {user}
+          </h4>
+          <h3>
+            {title}
+          </h3>
+          <p>
+            {typ}
+          </p>
+        </article>
+        {(toExtend || isMe) && (
+          <More
+            id={id}
+            isMe={isMe}
+            toExtend={toExtend}
+            handleExtend={this.handleExtend}
+            isExtended={isExtended}
+          />
+          )}
+      </div>
+    );
+  }
+}

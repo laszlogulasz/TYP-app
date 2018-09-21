@@ -55,3 +55,7 @@
     }
   }
 }
+
+.none, .none::before, .none::after {
+  background-image: none;
+}

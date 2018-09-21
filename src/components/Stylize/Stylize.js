@@ -1,27 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Draft from '../../components/Draft';
-import Filters from '../../components/Filters';
+import { Link, Redirect } from 'react-router-dom';
+import Draft from '../Draft';
+import Filters from '../Filters';
 import Header from '../Header/Header';
+import Button from '../Button/Button';
 
 const Stylize = (props) => {
   const {
-    title, typ, typFilter, filterSwitch, history,
+    title, typ, typFilter, filterSwitch,
   } = props;
 
-  const back = e => {
-    e.stopPropagation();
-    history.goBack();
-  };
-
+  if (typ === '' && title === '') {
+    return <Redirect to='/' />;
+  }
   return (
     <React.Fragment>
       <Header>
-        <h4 onClick={back}>back</h4><Link to="/type/preview" ><h4>Preview</h4></Link>
+        <li className="header__nav__elem">
+          <Button to="/type">Back</Button>
+        </li>
+        <li className="header__nav__elem">
+          <Button to="/type/preview">
+            Preview
+          </Button>
+        </li>
       </Header>
       <section className="content__box content__box--between">
         <Draft title={title} typ={typ} typFilter={typFilter} />
-        <Filters typFilter={typFilter} filterSwitch={filterSwitch}/>
+        <Filters typFilter={typFilter} filterSwitch={filterSwitch} />
       </section>
     </React.Fragment>
   );

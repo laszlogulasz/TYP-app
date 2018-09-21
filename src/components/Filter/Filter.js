@@ -4,7 +4,7 @@ const Filter = (props) => {
   const {
     typFilter, id, filterSwitch,
   } = props;
-  const handleFilterSwitch = e => {
+  const handleFilterSwitch = (e) => {
     console.log(typFilter, id, filterSwitch);
     filterSwitch(e.currentTarget.id);
   };

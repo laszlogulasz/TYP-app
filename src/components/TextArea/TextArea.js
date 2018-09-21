@@ -18,7 +18,7 @@ const TextArea = (props) => {
         onChange={handleChange}
         value={content}
       />
-    <div className={`type__containter--resize type__content--${type}`}>
+      <div className={`type__containter--resize type__content--${type}`}>
         {content}
       </div>
     </div>

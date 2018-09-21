@@ -1,13 +1,13 @@
 const initialState = {
   title: '',
-  typ: ''
-}
+  typ: '',
+};
 const typReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'UPDATE_TITLE':
-      return {...state, title: action.title};
+      return { ...state, title: action.title };
     case 'UPDATE_TYP':
-      return {...state, typ: action.typ};
+      return { ...state, typ: action.typ };
     case 'RESET_TYP':
       return initialState;
     default:

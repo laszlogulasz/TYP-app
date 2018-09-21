@@ -1,6 +1,55 @@
 .login {
   overflow: auto;
-  .login__button {
-    @include button(80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__elem, &__icon, &__elem > * {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: $darkgray;
+      text-align: center;
+    }
+    &__elem, &__elem > * {
+      font: 500 1.8em proxima-nova;
+      color: $darkgray;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .fab {
+      font-size: 20px;
+      width: 20px;
+      align-self: center;
+    }
+  .logo {
+    margin: 20vh 0 50px 0;
+    position: relative;
+    @include svg($background);
+    height: 94px;
+    width: 220px;
+
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 94px;
+      width: 220px;
+    }
+
+    &::before {
+      @include svg($lightgray);
+      z-index: -1;
+      top: 6px;
+      left: -6px;
+    }
+
+    &::after {
+      @include svg($darkgray);
+      top: -6px;
+      left: 6px;
+    }
   }
 }

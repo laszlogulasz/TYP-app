@@ -9,7 +9,7 @@ import Loader from './components/Loader/Loader';
 import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout';
 import { loggingSwitch } from './actions';
-import { fire, authRef } from './fire/fire';
+import { authRef } from './fire/fire';
 
 const PrivateRoute = ({ component: Component, logged, ...rest }) => (
   <Route
@@ -34,6 +34,7 @@ class App extends React.Component {
       if (user) {
         loggingSwitch(true);
         (this.setState({ loading: false, currentUser: authRef.currentUser }));
+        console.log(user);
       } else {
         loggingSwitch(false);
         (this.setState({ loading: false, currentUser: null }));
@@ -60,37 +61,35 @@ class App extends React.Component {
     return (
       <div className="container" style={loading ? { zIndex: '-1' } : { zIndex: '1' }}>
         <Switch>
-          <Route
-            path="/login"
-            render={props => (
-              <Login
-                logged={logged}
-                setCurrentUser={() => this.setCurrentUser}
-                {...props}
-              />
-            )}
+          <Route path="/login" render={props => <Login logged={logged} {...props} />} />
+          <PrivateRoute
+            exact
+            path="/"
+            logged={logged}
+            currentUser={currentUser}
+            component={Explore}
           />
-          <PrivateRoute exact path="/" logged={logged} component={Explore} />
           <PrivateRoute
             path="/type"
             logged={logged}
             currentUser={currentUser}
             component={Type}
           />
-          <PrivateRoute path="/me" logged={logged} component={Me} />
-          <Route path="/logout" component={Logout} />
-          <Route render={() => (
-            <h2>
-              404 Error
-            </h2>
-          )}
+          <PrivateRoute
+            path="/me"
+            logged={logged}
+            component={Me}
+            currentUser={currentUser}
           />
+          <Route path="/logout" component={Logout} />
+          <Route render={() => <h2>Houston, We&apos;ve Got a Problem 404...</h2>} />
         </Switch>
-        <Footer logged={logged} currentUser={currentUser}/>
+        <Footer logged={logged} user={currentUser} />
       </div>
     );
   }
 }
+
 const mapStateToProps = state => ({
   logged: state.loggingReducer,
 });

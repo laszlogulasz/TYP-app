@@ -1,3 +1,3 @@
-import Stylize from './Stylize.js';
+import Stylize from './Stylize';
 
 export default Stylize;

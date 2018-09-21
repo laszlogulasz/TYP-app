@@ -1,25 +1,101 @@
-header {
+.header {
+  position: relative;
+  @include svg($lightgray);
+  background-repeat: no-repeat;
+  background-size: 70px 25px;
+  background-position: calc(50% - 2px) 22px;
   background-color: $white;
-  padding: 0 15px;
   width: 100%;
-  min-height: 88px;
+  padding: 0 15px;
+  min-height: 58px;
+  @include min-device(phone-xl) {
+    background-position: calc(50% - 2px) 42px;
+    min-height: 88px;
+  };
   display: flex;
   align-items: center;
   border-bottom: 1px solid $lightgray;
   box-shadow: 0 0 2px 1px rgba(0,0,0,0.25);
-  justify-content: space-between;
+  justify-content: flex-start;
   z-index: 1000;
-
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 58px;
+    @include min-device(phone-xl) {
+      height: 88px;
+    };
+    width: 100%;
+    z-index: -1;
+  }
+  &::before {
+    @include svg($white);
+    background-size: 70px 25px;
+    background-position: calc(50%) 20px;
+    @include min-device(phone-xl) {
+      background-position: calc(50%) 40px;
+    };
+    background-repeat: no-repeat;
+  }
+  &::after {
+    @include svg($darkgray);
+    background-size: 70px 25px;
+    background-position: calc(50% + 2px) 18px;
+    @include min-device(phone-xl) {
+      background-position: calc(50% + 2px) 38px;
+    };
+    background-repeat: no-repeat;
+  }
+  &__nav {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 0px;
+    @include min-device(phone-xl) {
+      padding-top: 20px;
+    };
+    &__elem, &__icon > *, &__elem > *{
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    &__elem, &__elem > * {
+      font: 300 1em proxima-nova;
+      text-decoration: underline;
+      color: $gray;
+      &:last-child > * {
+        font: 500 1em proxima-nova;
+        color: $gray;
+        text-decoration: underline;
+      }
+    }
+    &__elem:hover, &__elem:hover > * {
+      color: $darkgray;
+      &:last-child > * {
+        color: $darkgray;
+      }
+    }
+    .fas {
+      font-size: 28px;
+      width: 43px;
+      align-self: center;
+    }
+    .header__nav__elem--inactive {
+      color: $lightgray;
+      cursor: default;
+      text-decoration: none;
+      font: 500 1em proxima-nova;
+    }
+  }
   .logo {
     width: 45px;
     height: 45px;
   }
 
-  .header__button {
-    @include button(80px);
-  }
-
-  .none {
-    visibility: hidden;
-  }
+}
+.none, .none::before, .none::after {
+  background-image: none;
 }

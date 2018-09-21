@@ -2,7 +2,12 @@
 
   .filters__list {
     list-style: none;
+    width: 100vw;
+    @include min-device(desk) {
     width: 373px;
+    min-height: 88px;
+  };
+
     overflow-x: auto;
     display: flex;
     flex-direction: row;

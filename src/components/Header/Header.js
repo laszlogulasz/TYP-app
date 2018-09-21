@@ -1,18 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 const Header = (props) => {
-  const { logged } = props;
+  const { logged, nologo } = props;
   return (
-    <header id="header" style={logged ? {visibility: 'visible'} : {visibility: 'hidden'}}>
+    <header
+      className={nologo ? "header none" : "header"}
+      style={logged ? { visibility: 'visible' } : { visibility: 'hidden' }}
+    >
+    <ul className="header__nav">
       {props.children}
+    </ul>
     </header>
   );
 };
-const mapStateToProps = state => {
-    return {
-        logged: state.loggingReducer,
-    };
-};
+const mapStateToProps = state => ({
+  logged: state.loggingReducer,
+});
 export default connect(mapStateToProps)(Header);

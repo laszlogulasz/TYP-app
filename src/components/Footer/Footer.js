@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Footer = (props) => {
-  const { logged, currentUser } = props;
+  const { logged, user } = props;
 
   return (
     <footer
@@ -12,7 +12,6 @@ const Footer = (props) => {
       <NavLink
         to="/"
         exact
-        className="outer"
         activeClassName="current"
         aria-label="explore latest posts"
       >
@@ -20,31 +19,29 @@ const Footer = (props) => {
       </NavLink>
       <NavLink
         to="/type"
-        className="outer"
         activeClassName="current"
         aria-label="Write new TYP"
       >
         <i className="fas fa-edit inner"></i>
       </NavLink>
-      <NavLink
-        to="/me"
-        className="outer last"
-        activeClassName="current"
-        aria-label="Explore your TYPs"
-      >{
-        currentUser ?
-        <div className="column">
+      {
+        user ?
+        <NavLink
+          to="/me"
+          className="last"
+          activeClassName="current"
+          aria-label="Explore your TYPs"
+        >
           <div className="shadow">
-            <img
-              className="profileImage"
-              src={currentUser.photoURL}
-              alt={`Profile picture of ${currentUser.displayName}`}
-            />
-        </div>
-      </div>
+              <img
+                className="profileImage"
+                src={user.photoURL}
+                alt={`Avatar of ${user.displayName}`}
+              />
+          </div>
+        </NavLink>
         : <i className="fas fa-user-circle inner"></i>
         }
-      </NavLink>
     </footer>
   );
 };

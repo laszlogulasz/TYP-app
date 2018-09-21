@@ -26,11 +26,14 @@
     color: $gray;
 
   }
+
   .active {
     box-shadow: none;
     outline: none;
-    color: $darkgray;
-    font: 500 0.8em proxima-nova;
-    font-style: italic;
+      h4 {
+      color: $darkgray;
+      font: 500 0.8em proxima-nova;
+      font-style: italic;
+    }
   }
 }

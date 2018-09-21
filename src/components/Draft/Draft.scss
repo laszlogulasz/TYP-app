@@ -1,7 +1,12 @@
-.draft {
-  @include post();
-  width: 335px;
-  height: 312px;
-  overflow: hidden;
+.draft__box {
+width: 100%;
+  .draft {
+    @include post();
+    max-height: 100%;
+    @include min-device(phone-m) {
+    height: 312px;
+  };
+    overflow: hidden;
 
+  }
 }

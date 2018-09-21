@@ -1,10 +1,12 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { fire, fbProvider } from '../../fire/fire';
+import Button from '../Button/Button';
 
 class Login extends React.Component {
   state = {
     redirect: false,
+    error: false,
   }
 
   fbAuth() {
@@ -14,9 +16,10 @@ class Login extends React.Component {
       .signInWithPopup(fbProvider)
       .then((user, error) => {
         if (error) {
-          console.log('bubu');
+          this.setState({
+            error: true,
+          });
         } else {
-          setCurrentUser(user);
           this.setState({
             redirect: true,
           });
@@ -26,7 +29,7 @@ class Login extends React.Component {
 
   render() {
     const { location, logged } = this.props;
-    const { redirect } = this.state;
+    const { redirect, error } = this.state;
     const { from } = location.state || { from: { pathname: '/' } };
 
     if (redirect === true || logged === true) {
@@ -34,15 +37,28 @@ class Login extends React.Component {
     }
     return (
       <section className="login">
-        <span className="outer">
-          <button
-            className="login__button inner"
+        <div className="logo"></div>
+        {error ? (
+          <h2>
+            Oooops, please try again
+            <span role="img" aria-label="Hands pressed together">
+              🙏
+            </span>
+          </h2>
+          ) : (
+            <h2>
+              Write posts with style!<br/>
+            Just start typing and choose typography filter that fits your toughts.
+              <br/>
+            </h2>
+          )
+        }
+          <Button className="login__icon"
             onClick={() => { this.fbAuth(); }}
-            type="button"
           >
-            LOG IN
-          </button>
-        </span>
+            <i className="fab fa-facebook-square"></i>
+            <span className="login__elem">&nbsp; Login with Facebook</span>
+        </Button>
       </section>
     );
   }

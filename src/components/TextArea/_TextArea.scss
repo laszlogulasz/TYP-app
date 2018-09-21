@@ -1,6 +1,6 @@
 .type__container {
   position: relative;
-  width: 303px;
+  min-width: 100%;
 }
 
 .type__content, .type__containter--resize {
@@ -17,7 +17,6 @@
   position: absolute;
   resize: none;
   white-space: normal;
-  //color: transparent;
   text-shadow: 0 0 0 $darkgray;
   outline:1px solid $lightlightgray;
 }
@@ -30,32 +29,17 @@
 .type__content--title {
   min-height: 40px;
   margin-bottom: 15px;
+  color: #000;
 }
 
 .type__content--typ {
   min-height: 230px;
+  color: $darkgray;
 }
 
 .type__content:focus {
   outline:1px solid $lightgray;
   box-shadow: none;
-}
-
-.type__content:focus ~ .type__containter--resize::after {
-  visibility: visible;
-  content: '_';
-  position: absolute;
-  color: $darkgray;
-  animation: 1s blink step-end infinite;
-}
-
-@keyframes blink {
-  from, to {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
 }
 
 .type__content::placeholder {
