@@ -3,10 +3,10 @@ import { typRef } from '../../fire/fire';
 import Button from '../Button/Button';
 
 const More = (props) => {
-  const {id, isMe, handleExtend, isExtended, toExtend} = props;
+  const {id, isUserPage, handleExpand, isExpanded, toExpand} = props;
 
   const handleMore = () => {
-    handleExtend();
+    handleExpand();
   }
 
   const handleRemove = () => {
@@ -14,15 +14,15 @@ const More = (props) => {
   }
 
   return (
-    <ul className={`more ${isMe && 'more--right'}`}>
-      {isMe && (
+    <ul className={`more ${isUserPage && 'more--right'}`}>
+      {isUserPage && (
         <li className="more__elem">
           <Button onClick={handleRemove}>Delete</Button>
         </li>
       )}
-      {toExtend && (
+      {toExpand && (
         <li className="more__elem">
-          <Button onClick={handleMore}>{isExtended ? 'Collapse' : 'Read more'}</Button>
+          <Button onClick={()=>handleExpand()}>{isExpanded ? 'Collapse' : 'Read more'}</Button>
         </li>
       )}
     </ul>

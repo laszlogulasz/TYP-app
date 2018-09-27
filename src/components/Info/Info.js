@@ -32,6 +32,7 @@ export default class Info extends React.Component {
 
   render() {
     const { posts } = this.state;
+    const { match } = this.props;
     if (!posts) {
       return (
         <Loader />
@@ -46,6 +47,7 @@ export default class Info extends React.Component {
         user={post.userName}
         title={post.title}
         typ={post.typ}
+        url={match.url}
       />));
     return (
       <React.Fragment>

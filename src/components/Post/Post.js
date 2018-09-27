@@ -5,35 +5,36 @@ import More from '../More/More';
 export default class Post extends React.Component {
   state = {
     height: 0,
-    isExtended: false,
+    isExpanded: false,
   }
 
   componentDidMount() {
     this.setState({ height: this.article.clientHeight });
   }
 
-  handleExtend = () => {
-    this.setState(state => ({ isExtended: !state.isExtended }));
+  handleExpand = () => {
+    this.setState(state => ({ isExpanded: !state.isExpanded }));
   }
 
   render() {
-    const { height, isExtended } = this.state;
+    const { height, isExpanded } = this.state;
     const {
-      user, uid, title, typ, typFilter, visible, id, self, url,
+      user, uid, title, typ, typFilter, visible, id, self, url, path
     } = this.props;
 
     const isPreview = url === '/type/preview';
     const isInfo = url === '/info';
-    const toExtend = height > 200 && !isPreview;
-    const isMe = url ==='/me';
-
+    const isUserPage = url ==='/me';
+    const toExpand = height > 200 && !isInfo &&!isPreview;
+    const showMore = toExpand || isUserPage;
+    const showFadeOut = toExpand && !isExpanded && !isPreview;
     return (
       <div className="post">
         <article
           className={
             `post__data
             globaltyp ${typFilter}
-            ${((toExtend && !isExtended) && !isPreview) && 'globaltyp--inset'}`
+            ${showFadeOut && 'globaltyp--fadeOut'}`
           }
           ref={(e) => { this.article = e; }}
         >
@@ -48,13 +49,13 @@ export default class Post extends React.Component {
             {typ}
           </p>
         </article>
-        {(toExtend || isMe) && (
+        {showMore && (
           <More
             id={id}
-            isMe={isMe}
-            toExtend={toExtend}
-            handleExtend={this.handleExtend}
-            isExtended={isExtended}
+            isUserPage={isUserPage}
+            toExpand={toExpand}
+            handleExpand={this.handleExpand}
+            isExpanded={isExpanded}
           />
           )}
       </div>

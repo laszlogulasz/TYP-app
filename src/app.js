@@ -76,7 +76,6 @@ class App extends React.Component {
 
     return (
       <React.Fragment>
-        <Cookies cookies={cookies} handleCookiesAccept={this.handleCookiesAccept} />
         <div className="container" style={loading ? { zIndex: '-1' } : { zIndex: '1' }}>
           <Switch>
             <Route path="/login" render={props => <Login logged={logged} {...props} />} />
@@ -109,6 +108,7 @@ class App extends React.Component {
           </Switch>
           <Footer logged={logged} user={currentUser} />
         </div>
+        <Cookies cookies={cookies} handleCookiesAccept={this.handleCookiesAccept} />
       </React.Fragment>
     );
   }

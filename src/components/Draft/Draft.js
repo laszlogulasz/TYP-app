@@ -11,7 +11,7 @@ const Draft = (props) => {
         💃🕺
         </span>
       </h2>
-      <article className={`draft globaltyp globaltyp--inset ${typFilter}`}>
+      <article className={`draft globaltyp globaltyp--fadeOut ${typFilter}`}>
         <h3>
           {title}
         </h3>
