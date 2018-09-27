@@ -18,7 +18,7 @@ $darkgray: hsl(0, 0%, 30%);
     }
   } @else
   if $size == phone-xl {
-    @media (min-height: 812px) {
+    @media (min-height: 813px) {
       @content;
     }
   } @else
@@ -72,7 +72,7 @@ h2 {
   text-align: center;
   background-color: $lightgray;
   color: transparent;
-  text-shadow: 1px 2px 0 rgba(255,255,255,0.3);
+  text-shadow: 1px 2px 0 rgba(255,255,255,0.2);
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
@@ -94,18 +94,35 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  @include min-device(phone-xl) {
+    height: 100vh;
+    };
   background: radial-gradient(rgba(255, 255, 255, 1) 40%, rgba(200, 200, 200, 1) 100%);
 }
 .content__box {
   display: flex;
   overflow: auto;
-  height: 100%;
+  height: calc(100vh - 116px);
+  @supports (-webkit-overflow-scrolling: touch) {
+    height: calc(100vh - 134px);
+  }
   width: 100%;
   flex-direction: column;
   align-items: center;
+  margin-top: 58px;
+  @include min-device(phone-xl) {
+    margin: 0;
+    height: 100%;
+    }
+  &--type {
+    @supports (-webkit-overflow-scrolling: touch) {
+      height: calc(100vh - 116px);
+    }
+  }
   &--between {
-    justify-content: space-between;
+    @include min-device(phone-xl) {
+      justify-content: space-between;
+    }
   }
 }
 
@@ -116,19 +133,20 @@ body {
   min-width: 100vw;
   max-width: 100vw;
   @include min-device(desk) {
-    min-width: 375px;
-    max-width: 375px;
+    min-width: 378px;
+    max-width: 378px;
     border-radius: 30px;
     box-shadow: 0 0 1px 1px rgba(200,200,200,1);
     @include border($lightgray);
   }
   height: 100vh;
-  min-height: 100vh;
+  @supports (-webkit-overflow-scrolling: touch) {
+    height: 100%;
+  }
   @include min-device(phone-xl) {
-    height: 812px;
+    max-height: 812px;
     min-height: 812px;
-  };
-
+  }
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
@@ -139,12 +157,16 @@ body {
   background-color: $darkgray;
   color: transparent;
   text-align: center;
-  text-shadow: 1px 1px 0 rgba(255,255,255,0.25);
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.35);
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
   width: 32px;
   &:active {
-    text-shadow: -1px -1px 0 rgba(255,255,255,0.25);
+    text-shadow: -1px -1px 0 rgba(255,255,255,0.35);
   }
+}
+
+.current > * {
+  color: $darkgray;
 }

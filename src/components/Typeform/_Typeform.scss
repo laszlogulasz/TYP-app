@@ -1,3 +1,6 @@
 .typeform {
   @include post();
+  @supports (-webkit-overflow-scrolling: touch) {
+    margin-bottom: 120px;
+  }
 }

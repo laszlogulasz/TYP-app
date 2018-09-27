@@ -1,12 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { typRef } from '../../fire/fire';
+import { infoRef } from '../../fire/fire';
 import Header from '../Header/Header';
 import Post from '../Post/Post';
 import Loader from '../Loader/Loader';
-import Button from '../Button/Button';
 
-export default class Explore extends React.Component {
+export default class Info extends React.Component {
   state = {
     posts: false,
   }
@@ -16,19 +15,18 @@ export default class Explore extends React.Component {
   }
 
   componentWillUnmount() {
-      typRef.off();
+      infoRef.off();
   }
 
   getData() {
-    const typPosts = [];
-      typRef.on("value", (snapshot) => {
+    const typPost = [];
+      infoRef.on("value", (snapshot) => {
       snapshot.forEach((childSnapshot) => {
         const item = childSnapshot.val();
         item.key = childSnapshot.key;
-        typPosts.push(item);
+        typPost.push(item);
       });
-      typPosts.reverse();
-      this.setState({ posts: typPosts });
+      this.setState({ posts: typPost });
     });
   };
 
@@ -48,11 +46,10 @@ export default class Explore extends React.Component {
         user={post.userName}
         title={post.title}
         typ={post.typ}
-        visible
       />));
     return (
       <React.Fragment>
-        <Header posts>
+        <Header>
           <NavLink
             to="/info"
             activeClassName="current"
@@ -61,13 +58,8 @@ export default class Explore extends React.Component {
             <i className="fas fa-info-circle"></i>
           </NavLink>
         </Header>
-        <section className="explore content__box">
-          <h2>
-            Enjoy the latest <em>typ_</em>s {` `}
-            <span role="img" aria-label="thumb up">
-            👍
-            </span>
-          </h2>
+        <section className="info content__box">
+          <h2>About the <em>typ_</em></h2>
           {postsList}
         </section>
       </React.Fragment>

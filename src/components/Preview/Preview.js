@@ -25,14 +25,14 @@ const Preview = (props) => {
     history.replace('/');
   };
 
-  if (typ === '' && title === '') {
+  if (typ === '') {
     return <Redirect to='/' />;
   }
   return (
     <React.Fragment>
       <Header>
         <li className="header__nav__elem">
-          <Button to="/type/stylize">Back</Button>
+          <button onClick={()=>history.goBack()}>Back</button>
         </li>
         <li className="header__nav__elem">
           <Button onClick={handleSubmit}>Publish</Button>

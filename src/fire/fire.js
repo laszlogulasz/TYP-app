@@ -6,7 +6,8 @@ const time = firebase.database.ServerValue.TIMESTAMP;
 const fbProvider = new firebase.auth.FacebookAuthProvider();
 const authRef = firebase.auth();
 const typRef = firebase.database().ref().child('typ');
+const infoRef = firebase.database().ref().child('info');
 const userRef = (user) => typRef.orderByChild('user').equalTo(user);
 export {
-  fire, fbProvider, authRef, typRef, time,
+  fire, fbProvider, authRef, typRef, infoRef, time,
 };

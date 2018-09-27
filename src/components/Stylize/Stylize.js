@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Draft from '../Draft';
 import Filters from '../Filters';
 import Header from '../Header/Header';
@@ -7,17 +7,17 @@ import Button from '../Button/Button';
 
 const Stylize = (props) => {
   const {
-    title, typ, typFilter, filterSwitch,
+    title, typ, typFilter, filterSwitch, history,
   } = props;
 
-  if (typ === '' && title === '') {
+  if (typ === '') {
     return <Redirect to='/' />;
   }
   return (
     <React.Fragment>
       <Header>
         <li className="header__nav__elem">
-          <Button to="/type">Back</Button>
+          <button onClick={()=>history.goBack()}>Back</button>
         </li>
         <li className="header__nav__elem">
           <Button to="/type/preview">

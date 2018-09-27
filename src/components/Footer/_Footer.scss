@@ -1,8 +1,15 @@
 .footer {
   background-color: $white;
   width: 100%;
+  @include min-device(desk) {
+    width: 375px;
+  };
   min-height: 58px;
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
   @include min-device(phone-xl) {
+    position: static;
     min-height: 88px;
     };
   display: flex;
@@ -29,16 +36,13 @@
       position: relative;
       box-sizing: border-box;
       z-index: -1;
+      top: -1px;
     }
     &, & > .profileImage{
       border-radius: 50%;
       width: 24px;
       height: 24px;
     }
-  }
-
-  .current > * {
-    color: $darkgray;
   }
 
  .current:last-child > * {

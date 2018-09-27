@@ -25,6 +25,7 @@ export default class Explore extends React.Component {
   getData() {
     const {currentUser} = this.props;
     const typPosts = [];
+
       typRef.orderByChild("uid")
       .equalTo(currentUser.providerData[0].uid)
       .once("value", (snapshot) => {
@@ -70,7 +71,7 @@ export default class Explore extends React.Component {
         </Header>
         <section className="me content__box">
           <h2>
-            Your recent <em>typ_</em>s&nbsp;
+            Your recent <em>typ_</em>s {` `}
             <span role="img" aria-label="spark">
             💫
             </span>

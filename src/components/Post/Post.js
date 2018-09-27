@@ -23,6 +23,7 @@ export default class Post extends React.Component {
     } = this.props;
 
     const isPreview = url === '/type/preview';
+    const isInfo = url === '/info';
     const toExtend = height > 200 && !isPreview;
     const isMe = url ==='/me';
 

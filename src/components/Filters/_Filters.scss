@@ -1,5 +1,10 @@
 .filters {
-
+  flex: 1;
+  display: flex;
+  align-items: center;
+  @include min-device(phone-l) {
+    align-items: flex-end;
+    };
   .filters__list {
     list-style: none;
     width: 100vw;

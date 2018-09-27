@@ -1,0 +1,61 @@
+.cookies__bar{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 2;
+
+  .cookies__info {
+    display: flex;
+    max-width: 1060px;
+    justify-content: center;
+    flex-direction: row;
+    background-color: hsla(0, 0%, 30%, 0.8);
+  }
+
+  p {
+    padding: 10px 30px 10px 15px;
+    font: 100 0.8em proxima-nova;
+    color: #fff;
+  }
+  .button__close {
+    position: relative;
+    right: 15px;
+    top: 5px;
+    color: white;
+    width: 15px;
+    height: 15px;
+    outline: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      outline: none;
+    }
+    &:before {
+      transform: rotate(-45deg);
+    }
+    &:after {
+      transform: rotate(45deg);
+    }
+
+    &:after, &:before {
+      content: '';
+      height: 15px;
+      border-left: 2px solid #fff;
+      position: absolute;
+      top: 0;
+    }
+
+    &:active:before,
+    &:focus:before,
+    &:hover:before,
+    &:active:after,
+    &:focus:after,
+    &:hover:after {
+      border-left: 2px solid #fff;
+      outline: none;
+    }
+  }
+}

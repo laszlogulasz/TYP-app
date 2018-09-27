@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 class Login extends React.Component {
   state = {
     redirect: false,
-    error: false,
+    error: false
   }
 
   fbAuth() {
@@ -46,9 +46,12 @@ class Login extends React.Component {
             </span>
           </h2>
           ) : (
-            <h2>
+            <h2 style={{padding: "15px"}}>
               Write posts with style!<br/>
-            Just start typing and choose typography filter that fits your toughts.
+            Just start typing and choose typography filter that fits your toughts {` `}
+            <span role="img" aria-label="information desk man">
+              💁‍♂️
+            </span>
               <br/>
             </h2>
           )

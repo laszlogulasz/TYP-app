@@ -6,14 +6,15 @@ import Button from '../Button/Button';
 
 const Typeform = (props) => {
   const {
-    titleChange, typChange, title, typ, typFilter, typReset,
+    titleChange, typChange, title, typ, typFilter, typReset, history,
   } = props;
 
   const cancel = () => {
     typReset();
+    history.goBack();
   };
 
-  const stylize = (typ !== '' && title !== '')
+  const stylize = (typ !== '')
     ? (
       <li className="header__nav__elem">
         <Button to="/type/stylize">
@@ -34,11 +35,11 @@ const Typeform = (props) => {
     <React.Fragment>
       <Header>
         <li>
-          <Button className="header__nav__elem" onClick={cancel} to="/">Cancel</Button>
+          <button className="header__nav__elem" onClick={cancel}>Cancel</button>
         </li>
         {stylize}
       </Header>
-      <section className="content__box">
+      <section className="content__box content__box--type">
         <h2>
           Type your <em>typ_</em>{' '}
           <span role="img" aria-label="writing hand">
@@ -50,7 +51,7 @@ const Typeform = (props) => {
             content={title}
             type="title"
             change={titleChange}
-            placeholder="Your great title"
+            placeholder="Your great title (if wish)"
           />
           <TextArea
             content={typ}

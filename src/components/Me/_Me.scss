@@ -1,7 +1,7 @@
 .me {
   overflow: auto;
-
-  .me--button {
-    @include button(80px);
+  margin-bottom: 58px;
+  @include min-device(phone-xl) {
+    margin-bottom: 0;
   }
 }

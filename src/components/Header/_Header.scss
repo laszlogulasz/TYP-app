@@ -1,14 +1,18 @@
 .header {
-  position: relative;
+  position: fixed;
   @include svg($lightgray);
   background-repeat: no-repeat;
   background-size: 70px 25px;
   background-position: calc(50% - 2px) 22px;
   background-color: $white;
   width: 100%;
+  @include min-device(desk) {
+    width: 375px;
+  };
   padding: 0 15px;
   min-height: 58px;
   @include min-device(phone-xl) {
+    position: relative;
     background-position: calc(50% - 2px) 42px;
     min-height: 88px;
   };

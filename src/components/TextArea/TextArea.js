@@ -19,7 +19,7 @@ const TextArea = (props) => {
         value={content}
       />
       <div className={`type__containter--resize type__content--${type}`}>
-        {content}
+        {`${content} \n`}
       </div>
     </div>
   );
