@@ -1,0 +1,12 @@
+.me {
+  display: flex;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+
+  .me--button {
+    @include button(80px);
+  }
+}

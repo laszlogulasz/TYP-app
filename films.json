@@ -1,0 +1,25 @@
+{
+    "films": [{
+        "id": 1,
+        "title": "New Hope",
+        "desc": "Luke Skywalker begins a journey that will change the galaxy, as he leaves his home planet, battles the evil Empire, and learns the ways of the Force."
+    }, {
+        "id": 2,
+        "title": "Empire Strikes Back",
+        "desc": "After the destruction of the Death Star, the Empire has regrouped -- with Darth Vader leading the hunt for Luke Skywalker."
+    }, {
+        "id": 3,
+        "title": "Return of the Jedi",
+        "desc": "Luke Skywalker heads a mission to rescue Han Solo from the clutches of Jabba the Hutt, and faces Darth Vader one last time."
+    }, {
+        "id": 4,
+        "title": "The Force Awakens",
+        "desc": "Thirty years after the defeat of the Empire, Luke Skywalker has vanished and a new threat has risen: The First Order, led by the mysterious Supreme Leader Snoke and his dark side enforcer, Kylo Ren. General Leia Organa’s military force, the Resistance — and unlikely heroes brought together by fate — are the galaxy’s only hope at thwarting a new reign of evil."
+    }, {
+        "id": 5,
+        "title": "Last Jedi",
+        "desc": "tbc"
+
+    }]
+
+}

@@ -1,0 +1,57 @@
+.explore {
+  overflow: auto;
+
+  .post {
+    align-items: center;
+    background-color: $white;
+    padding: 15px 15px 10px;
+    margin: 10px;
+    @include border($lightgray);
+    border-radius: 5px;
+    box-shadow: 0 0 3px 1px rgba(200,200,200,1);
+
+    .fa-user,
+    h3 {
+      display: inline;
+      color: $darkgray;
+    }
+
+    h4 {
+      position: relative;
+      width: 200px;
+      top: 0;
+      left: 60px;
+      font: 300 1em futura-pt;
+      color: $darkgray;
+    }
+
+    .fa-user {
+      position: relative;
+      top: -10px;
+      left: 5px;
+      padding: 10px 10px 8px 0;
+      border-right: 1px solid $lightgray;
+    }
+
+    h3 {
+      padding: 0 0 0 15px;
+    }
+
+    p {
+      padding: 10px 0 25px;
+      color: $darkgray;
+    }
+
+    .post__more--list {
+      list-style: none;
+      border-top: 1px solid $lightgray;
+      padding-top: 10px;
+
+      .post__more--elem {
+        display: inline;
+        padding-right: 30px;
+        color: $darkgray;
+      }
+    }
+  }
+}
