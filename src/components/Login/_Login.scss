@@ -2,8 +2,12 @@
   overflow: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  height: 100vh;
+  @include min-device(phone-xl) {
+    height: 100%
+  }
   &__elem, &__icon, &__elem > * {
     margin-top: 15px;
       background: none;
@@ -25,7 +29,10 @@
       align-self: center;
     }
   .logo {
-    margin: 20vh 0 50px 0;
+    margin: 5vh 0 20px 0;
+    @include min-device(phone-m) {
+      margin: 20vh 0 50px 0;
+    }
     position: relative;
     @include svg($background);
     height: 94px;

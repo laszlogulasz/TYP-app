@@ -1,6 +1,6 @@
 import React from 'react';
-import Avatar from '../Avatar/Avatar';
-import More from '../More/More';
+import Avatar from '../Avatar';
+import More from '../More';
 
 export default class Post extends React.Component {
   state = {
@@ -19,17 +19,17 @@ export default class Post extends React.Component {
   render() {
     const { height, isExpanded } = this.state;
     const {
-      user, uid, title, typ, typFilter, visible, id, self, url, path
+      user, uid, title, typ, typFilter, id, url,
     } = this.props;
 
     const isPreview = url === '/type/preview';
     const isInfo = url === '/info';
-    const isUserPage = url ==='/me';
-    const toExpand = height > 200 && !isInfo &&!isPreview;
+    const isUserPage = url === '/me';
+    const toExpand = height > 200 && !isInfo && !isPreview;
     const showMore = toExpand || isUserPage;
     const showFadeOut = toExpand && !isExpanded && !isPreview;
     return (
-      <div className="post">
+      <section className="post">
         <article
           className={
             `post__data
@@ -39,15 +39,9 @@ export default class Post extends React.Component {
           ref={(e) => { this.article = e; }}
         >
           <Avatar uid={uid} user={user} />
-          <h4>
-            {user}
-          </h4>
-          <h3>
-            {title}
-          </h3>
-          <p>
-            {typ}
-          </p>
+          <h4>{user}</h4>
+          <h3>{title}</h3>
+          <p>{typ}</p>
         </article>
         {showMore && (
           <More
@@ -57,8 +51,8 @@ export default class Post extends React.Component {
             handleExpand={this.handleExpand}
             isExpanded={isExpanded}
           />
-          )}
-      </div>
+        )}
+      </section>
     );
   }
 }

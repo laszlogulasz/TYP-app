@@ -1,6 +1,6 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
 const CompressionPlugin = require('compression-webpack-plugin');
 const webpack = require('webpack');
@@ -75,10 +75,10 @@ module.exports = {
       asset: '[path].gz[query]',
       algorithm: 'gzip',
       test: /\.js$|\.css$|\.html$/,
-      threshold: 10240,
-      minRatio: 0.8,
+      threshold: 0,
+      minRatio: 0.9,
     }),
-    // new BundleAnalyzerPlugin()
+    //new BundleAnalyzerPlugin()
 
   ],
 };

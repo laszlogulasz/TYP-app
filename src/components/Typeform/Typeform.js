@@ -1,25 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Header from '../Header/Header';
-import TextArea from '../TextArea/TextArea';
-import Button from '../Button/Button';
+import Header from '../Header';
+import TextArea from '../TextArea';
+import Button from '../Button';
 
 const Typeform = (props) => {
   const {
     titleChange, typChange, title, typ, typFilter, typReset, history,
   } = props;
-
   const cancel = () => {
     typReset();
     history.goBack();
   };
-
   const stylize = (typ !== '')
     ? (
       <li className="header__nav__elem">
-        <Button to="/type/stylize">
-          Stylize
-        </Button>
+        <Button to="/type/stylize">Stylize</Button>
       </li>
     )
     : (
@@ -30,21 +25,23 @@ const Typeform = (props) => {
         Stylize
       </li>
     );
-
   return (
     <React.Fragment>
       <Header>
         <li>
-          <button className="header__nav__elem" onClick={cancel}>Cancel</button>
+          <button type="button" className="header__nav__elem" onClick={cancel}>
+            Cancel
+          </button>
         </li>
         {stylize}
       </Header>
-      <section className="content__box content__box--type">
+      <main className="content__box content__box--type">
         <h2>
-          Type your <em>typ_</em>{' '}
-          <span role="img" aria-label="writing hand">
-            ✍️
-          </span>
+          Type your
+          {' '}
+          <em>typ_</em>
+          {' '}
+          <span role="img" aria-label="writing hand">✍️</span>
         </h2>
         <form className={`typeform globaltyp ${typFilter}`}>
           <TextArea
@@ -60,7 +57,7 @@ const Typeform = (props) => {
             placeholder="Your brilliant toughts"
           />
         </form>
-      </section>
+      </main>
     </React.Fragment>
   );
 };

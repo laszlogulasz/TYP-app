@@ -1,21 +1,20 @@
 import React from 'react';
-import { typRef, time } from '../../fire/fire';
-import { Link, Redirect } from 'react-router-dom';
-import Header from '../Header/Header';
-import Post from '../Post/Post';
-import Button from '../Button/Button';
+import { Redirect } from 'react-router-dom';
+import { allRef, time } from '../../fire/fire';
+import Header from '../Header';
+import Post from '../Post';
+import Button from '../Button';
 
 const Preview = (props) => {
   const {
     user, title, typ, typFilter, typReset, history, match,
   } = props;
-
   const handleSubmit = () => {
-    typRef
+    allRef
       .push()
       .set({
         title,
-        typ: typ,
+        typ,
         uid: user.providerData[0].uid,
         filter: typFilter,
         userName: user.displayName,
@@ -25,25 +24,22 @@ const Preview = (props) => {
     history.replace('/');
   };
 
-  if (typ === '') {
-    return <Redirect to='/' />;
-  }
+  if (typ === '') { return <Redirect to="/" />; }
   return (
     <React.Fragment>
       <Header>
         <li className="header__nav__elem">
-          <button onClick={()=>history.goBack()}>Back</button>
+          <button type="button" onClick={() => history.goBack()}>Back</button>
         </li>
         <li className="header__nav__elem">
           <Button onClick={handleSubmit}>Publish</Button>
         </li>
       </Header>
-      <section className="preview content__box">
+      <main className="preview content__box">
         <h2>
-          Ready to go? &nbsp;
-            <span role="img" aria-label="rocket">
-            🚀
-            </span>
+          Ready to go?
+          {' '}
+          <span role="img" aria-label="rocket">🚀</span>
         </h2>
         <Post
           uid={user.providerData[0].uid}
@@ -53,7 +49,7 @@ const Preview = (props) => {
           typFilter={typFilter}
           url={match.url}
         />
-      </section>
+      </main>
     </React.Fragment>
   );
 };

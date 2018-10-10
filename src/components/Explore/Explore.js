@@ -1,76 +1,37 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { typRef } from '../../fire/fire';
-import Header from '../Header/Header';
-import Post from '../Post/Post';
-import Loader from '../Loader/Loader';
-import Button from '../Button/Button';
+import { connect } from 'react-redux';
+import { allRef } from '../../fire/fire';
+import Header from '../Header';
+import PostsList from '../../containers/PostsList';
 
-export default class Explore extends React.Component {
-  state = {
-    posts: false,
-  }
-
-  componentDidMount() {
-    this.getData();
-  }
-
-  componentWillUnmount() {
-      typRef.off();
-  }
-
-  getData() {
-    const typPosts = [];
-      typRef.on("value", (snapshot) => {
-      snapshot.forEach((childSnapshot) => {
-        const item = childSnapshot.val();
-        item.key = childSnapshot.key;
-        typPosts.push(item);
-      });
-      typPosts.reverse();
-      this.setState({ posts: typPosts });
-    });
-  };
-
-  render() {
-    const { posts } = this.state;
-    if (!posts) {
-      return (
-        <Loader />
-      );
-    }
-
-    const postsList = posts.map(post => (
-      <Post
-        typFilter={post.filter}
-        key={post.key}
-        uid={post.uid}
-        user={post.userName}
-        title={post.title}
-        typ={post.typ}
-        visible
-      />));
-    return (
-      <React.Fragment>
+const Explore = (props) => {
+  const { posts } = props;
+  return (
+    <React.Fragment>
+      {posts && (
         <Header posts>
-          <NavLink
-            to="/info"
-            activeClassName="current"
-            aria-label="Get info about typ"
-          >
-            <i className="fas fa-info-circle"></i>
+          <NavLink to="/info" activeClassName="current" aria-label="Get info about typ">
+            <i className="fas fa-info-circle" />
           </NavLink>
-        </Header>
-        <section className="explore content__box">
+        </Header>)}
+      <main className="explore content__box">
+        {posts && (
           <h2>
-            Enjoy the latest <em>typ_</em>s {` `}
-            <span role="img" aria-label="thumb up">
-            👍
-            </span>
+            Enjoy the latest
+            {' '}
+            <em>typ_</em>
+            s
+            {' '}
+            <span role="img" aria-label="thumb up">👍</span>
           </h2>
-          {postsList}
-        </section>
-      </React.Fragment>
-    );
-  }
-}
+        )}
+        <PostsList typRef={allRef} {...props} />
+      </main>
+    </React.Fragment>
+  );
+};
+const mapStateToProps = state => ({
+  posts: state.postsReducer.posts,
+});
+export default connect(mapStateToProps)(Explore);

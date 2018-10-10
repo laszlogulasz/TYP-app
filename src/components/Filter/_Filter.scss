@@ -24,16 +24,13 @@
   .filter__name {
     text-align: center;
     color: $gray;
-
   }
 
   .active {
     box-shadow: none;
     outline: none;
-      h4 {
+    & + .filter__name {
       color: $darkgray;
-      font: 500 0.8em proxima-nova;
-      font-style: italic;
     }
   }
 }

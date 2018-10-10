@@ -1,13 +1,15 @@
-import firebase from 'firebase';
-import { config } from './keys';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
+import config from './keys';
 
 const fire = firebase.initializeApp(config);
 const time = firebase.database.ServerValue.TIMESTAMP;
 const fbProvider = new firebase.auth.FacebookAuthProvider();
 const authRef = firebase.auth();
-const typRef = firebase.database().ref().child('typ');
+const allRef = firebase.database().ref().child('typ');
 const infoRef = firebase.database().ref().child('info');
-const userRef = (user) => typRef.orderByChild('user').equalTo(user);
+
 export {
-  fire, fbProvider, authRef, typRef, infoRef, time,
+  fire, fbProvider, authRef, allRef, infoRef, time,
 };

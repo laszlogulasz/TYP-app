@@ -4,11 +4,9 @@ const TextArea = (props) => {
   const {
     content, type, change, placeholder,
   } = props;
-
   const handleChange = (e) => {
     change(e.target.value);
   };
-
   return (
     <div className="type__container">
       <textarea

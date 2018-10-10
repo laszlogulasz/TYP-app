@@ -21,3 +21,13 @@ export const loggingSwitch = logged => ({
 export const typReset = () => ({
   type: 'RESET_TYP',
 });
+
+export const postsUpdate = posts => ({
+  type: 'UPDATE_POSTS',
+  posts,
+});
+
+export const postsReset = posts => ({
+  type: 'RESET_POSTS',
+  posts,
+});

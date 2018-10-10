@@ -1,84 +1,51 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { typRef } from '../../fire/fire';
-import Header from '../Header/Header';
-import Post from '../Post/Post';
-import Loader from '../Loader/Loader';
-import Button from '../Button/Button';
+import { connect } from 'react-redux';
+import { allRef } from '../../fire/fire';
+import Header from '../Header';
+import PostsList from '../../containers/PostsList';
+import Button from '../Button';
 
-export default class Explore extends React.Component {
-  state = {
-    posts: false,
-  }
-
-  componentDidMount() {
-    this.getData();
-    typRef.on("child_removed", (snapshot) => {
-    this.getData();
-    });
-  }
-
-  componentWillUnmount() {
-      typRef.off();
-  }
-
-  getData() {
-    const {currentUser} = this.props;
-    const typPosts = [];
-
-      typRef.orderByChild("uid")
-      .equalTo(currentUser.providerData[0].uid)
-      .once("value", (snapshot) => {
-      snapshot.forEach((childSnapshot) => {
-        const item = childSnapshot.val();
-        item.key = childSnapshot.key;
-        typPosts.push(item);
-      });
-      typPosts.reverse();
-      this.setState({ posts: typPosts });
-    });
-  };
-
-  render() {
-    const { posts } = this.state;
-    const { match } = this.props;
-    if (!posts) {
-      return (
-        <Loader />
-      );
-    }
-
-    const postsList = posts.map(post => (
-      <Post
-        typFilter={post.filter}
-        key={post.key}
-        id={post.key}
-        user={post.userName}
-        uid={post.uid}
-        title={post.title}
-        typ={post.typ}
-        url={match.url}
-        visible
-      />));
-    return (
-      <React.Fragment>
+const Me = (props) => {
+  const { posts, currentUser } = props;
+  return (
+    <React.Fragment>
+      {posts && (
         <Header posts>
           <li className="header__nav__icon">
             <Button to="/logout" title="Logout">
-              <i className="fas fa-power-off inner"></i>
+              <i className="fas fa-power-off inner" />
             </Button>
           </li>
         </Header>
-        <section className="me content__box">
-          <h2>
-            Your recent <em>typ_</em>s {` `}
-            <span role="img" aria-label="spark">
-            💫
-            </span>
-          </h2>
-          {postsList}
-        </section>
-      </React.Fragment>
-    );
-  }
-}
+      )}
+      <main className="me content__box">
+        {posts && (posts.length > 0
+          ? (
+            <h2>
+              Your recent
+              {' '}
+              <em>typ_</em>
+              s
+              {' '}
+              <span role="img" aria-label="spark">💫</span>
+            </h2>
+          ) : (
+            <h2>
+              Write some
+              {' '}
+              <em>typ_</em>
+                s first
+              {' '}
+              <span role="img" aria-label="spark">💫</span>
+            </h2>
+          ))}
+        <PostsList typRef={allRef} currentUser={currentUser} {...props} />
+      </main>
+    </React.Fragment>
+  );
+};
+const mapStateToProps = state => ({
+  posts: state.postsReducer.posts,
+});
+
+export default connect(mapStateToProps)(Me);

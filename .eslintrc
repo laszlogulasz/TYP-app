@@ -8,12 +8,13 @@
   "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-one-expression-per-line": [2, { "allow": "single-child" }],
+    "react/prop-types": 0,
     "max-len": [1, 90, 2, {ignoreComments: true}],
-    "no-unused-expressions": [2, {"allowTernary": true }],
+    "no-unused-expressions": [2, {"allowShortCircuit": true, "allowTernary": true }],
     "no-underscore-dangle": [2, { "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] }],
-    "no-shadow": [2, {"allow": ["titleChange", "typChange", "filterSwitch"] }],
+    "no-shadow": [2, {"allow": ["props"] }],
     "no-console": "off",
-    "prefer-template": "off",
-    "react/prop-types": 0
+    "prefer-template": "off"
   }
 }

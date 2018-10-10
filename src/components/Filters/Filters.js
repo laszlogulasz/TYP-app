@@ -1,5 +1,5 @@
 import React from 'react';
-import Filter from '../Filter/Filter';
+import Filter from '../Filter';
 
 const Filters = (props) => {
   const { filterSwitch, typFilter } = props;
@@ -12,12 +12,9 @@ const Filters = (props) => {
       typFilter={typFilter}
     />
   ));
-
   return (
     <section className="filters">
-      <ul className="filters__list">
-        {filterList}
-      </ul>
+      <ul className="filters__list">{filterList}</ul>
     </section>
   );
 };

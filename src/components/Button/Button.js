@@ -2,17 +2,19 @@ import React from 'react';
 import { withRouter } from 'react-router';
 
 const Button = (props) => {
-  const { history, location, match, staticContext, to, onClick, ...rest } = props;
-
+  const {
+    history, location, match, staticContext, to, onClick, ...rest
+  } = props;
   return (
     <button
+      type="button"
       {...rest}
       onClick={(event) => {
-        onClick && onClick(event)
-        history.push(to)
+        onClick && onClick(event);
+        history.push(to);
       }}
     />
-  )
-}
+  );
+};
 
 export default withRouter(Button);

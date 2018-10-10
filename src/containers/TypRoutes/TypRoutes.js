@@ -1,18 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
-import {
-  titleChange, typChange, filterSwitch, typReset,
-} from '../../actions';
+import { Route } from 'react-router-dom';
+import * as actions from '../../actions';
 import Typeform from '../../components/Typeform';
 import Stylize from '../../components/Stylize';
 import Preview from '../../components/Preview';
 
-const Type = (props) => {
+const TypeRoutes = (props) => {
   const {
     titleChange, typChange, title, typ, typFilter, filterSwitch, typReset, currentUser,
   } = props;
-
 
 
   return (
@@ -66,8 +63,6 @@ const mapStateToProps = state => ({
   typFilter: state.filterReducer.filter,
 });
 
-const mapDispatchToProps = {
-  titleChange, typChange, filterSwitch, typReset,
-};
+const mapDispatchToProps = { ...actions };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Type);
+export default connect(mapStateToProps, mapDispatchToProps)(TypeRoutes);
