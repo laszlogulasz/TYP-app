@@ -23,7 +23,7 @@ $darkgray: hsl(0, 0%, 30%);
     }
   } @else
   if $size == desk {
-    @media (min-width: 415px) {
+    @media (min-width: 415px), (min-height: 813px) {
       @content;
     }
   } @else
@@ -76,7 +76,10 @@ h2 {
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
-  font: 800 1.8em proxima-nova;
+  font: 800 1.6em proxima-nova;
+  @include min-device(phone-m) {
+    font: 800 1.8em proxima-nova;
+  };
 }
 h4 {
   font: 100 0.8em proxima-nova;
@@ -90,39 +93,48 @@ h4 {
   box-sizing: border-box;
 }
 /*-- GLOBAL --*/
+html {
+    height:100%;
+}
+body {
+    min-height:100%;
+}
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   @include min-device(phone-xl) {
-    height: 100vh;
     };
   background: radial-gradient(rgba(255, 255, 255, 1) 40%, rgba(200, 200, 200, 1) 100%);
 }
 
 .content__box {
-  display: flex;
+  -webkit-transform: translate3d(0,0,0);
   overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  height: calc(100vh - 116px);
-  // @supports (-webkit-overflow-scrolling: touch) {
-  //   height: calc(100vh - 134px);
-  // }
+  height: 100vh;
   width: 100%;
   flex-direction: column;
   align-items: center;
-  margin-top: 58px;
+  margin: 58px 0;
   @include min-device(phone-xl) {
-    margin: 0;
+
     }
-
+  @include min-device(desk) {
+    margin: 0 ;
+    height: 100%;
+    }
   &--type {
+    @supports (-webkit-overflow-scrolling: touch) {
+      height: calc(100vh - 116px);
+    }
   }
-
   &--between {
     @include min-device(phone-xl) {
       justify-content: space-between;
     }
+  }
+  &--touch {
+    -webkit-overflow-scrolling: touch;
   }
 }
 

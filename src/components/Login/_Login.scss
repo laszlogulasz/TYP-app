@@ -48,14 +48,14 @@
     }
 
     &::before {
-      @include svg($lightgray);
+      @include svg($darkgray);
       z-index: -1;
       top: 6px;
       left: -6px;
     }
 
     &::after {
-      @include svg($darkgray);
+      @include svg($gray);
       top: -6px;
       left: 6px;
     }

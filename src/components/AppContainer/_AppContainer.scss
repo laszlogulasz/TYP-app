@@ -1,11 +1,18 @@
 .container {
-  position: relative;
+  position: fixed;
+  -webkit-transform: translate3d(0,0,0);
+  top: 0;
+  left: 0;
   display: flex;
-  z-index: 1;
   background-color: $background;
   min-width: 100vw;
   max-width: 100vw;
   @include min-device(desk) {
+    max-height: 812px;
+  }
+
+  @include min-device(desk) {
+    position: static;
     min-width: 378px;
     max-width: 378px;
     border-radius: 30px;
@@ -15,10 +22,6 @@
   height: 100vh;
   @supports (-webkit-overflow-scrolling: touch) {
     height: 100%;
-  }
-  @include min-device(phone-xl) {
-    max-height: 812px;
-    min-height: 812px;
   }
   justify-content: space-between;
   align-items: center;

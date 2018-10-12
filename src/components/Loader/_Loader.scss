@@ -5,33 +5,35 @@
   height: 100vh;
   @include min-device(phone-xl) {
     height: 100%
-    }
+  }
   @include svg($background);
   background-repeat: no-repeat;
-  width: 320px;
+  width: 300px;
+  @include min-device(phone-m) {
+    width: 320px;
+  }
 
   &::before, &::after {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    height: 100vh;
-    @include min-device(phone-xl) {
-      height: 100%
-      }
-    width: 320px;
+    height: 100%;
+    width: 300px;
+    @include min-device(phone-m) {
+      width: 320px;
+    }
   }
 
   &::before {
-    @include svg($lightgray);
+    @include svg($darkgray);
     background-repeat: no-repeat;
     animation: spring 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
     z-index: -1;
-
   }
 
   &::after {
-    @include svg($darkgray);
+    @include svg($gray);
     background-repeat: no-repeat;
     animation: spring-reverse 0.8s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
   }

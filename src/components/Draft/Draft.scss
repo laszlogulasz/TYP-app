@@ -2,11 +2,11 @@
 width: 100%;
   .draft {
     @include post();
-    max-height: 100%;
+    height: calc(100vh - 418px);
     @include min-device(phone-m) {
     height: 312px;
+    max-height: 312px;
   };
     overflow: hidden;
-
   }
 }

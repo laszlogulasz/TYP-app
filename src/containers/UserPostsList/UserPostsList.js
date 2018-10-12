@@ -3,20 +3,15 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import Post from '../../components/Post';
 import Loader from '../../components/Loader';
-import Explore from '../../components/Explore';
-import Info from '../../components/Info';
+import Me from '../../components/Me';
 
 class PostsList extends React.Component {
   componentDidMount() {
-    this.getAllPosts();
-  }
-
-  componentDidUpdate(prevProps) {
-    const { postsReset, match } = this.props;
-    if (match.url !== prevProps.match.url) {
-      postsReset();
-      this.getAllPosts();
-    }
+    const { typRef } = this.props;
+    this.getUserPosts();
+    typRef.on('child_removed', () => {
+      this.getUserPosts();
+    });
   }
 
   componentWillUnmount() {
@@ -25,11 +20,11 @@ class PostsList extends React.Component {
     typRef.off();
   }
 
-  getAllPosts() {
-    const { typRef, postsUpdate, match } = this.props;
-    const isMe = match.url === '/me';
-    if (!isMe) {
-      typRef.on('value', (snapshot) => {
+  getUserPosts() {
+    const { typRef, postsUpdate, currentUser } = this.props;
+    typRef.orderByChild('uid')
+      .equalTo(currentUser.providerData[0].uid)
+      .once('value', (snapshot) => {
         const typPosts = [];
         snapshot.forEach((childSnapshot) => {
           const item = childSnapshot.val();
@@ -38,14 +33,12 @@ class PostsList extends React.Component {
         });
         typPosts.reverse();
         postsUpdate(typPosts);
+        console.log('dziala');
       });
-    }
   }
 
   render() {
     const { posts, match } = this.props;
-    const isExplore = match.url === '/';
-    const isInfo = match.url === '/info';
     if (!posts) { return <Loader />; }
     const postsList = posts.map(post => (
       <Post
@@ -59,10 +52,7 @@ class PostsList extends React.Component {
         url={match.url}
       />));
     return (
-      <React.Fragment>
-        {isExplore && <Explore postsList={postsList} />}
-        {isInfo && <Info postsList={postsList} />}
-      </React.Fragment>
+      <Me postsList={postsList} />
     );
   }
 }

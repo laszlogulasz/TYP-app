@@ -1,24 +1,23 @@
 .footer {
   background-color: $white;
   width: 100%;
-  @include min-device(desk) {
-    width: 376px;
-  };
   min-height: 58px;
   position: fixed;
   bottom: 0;
-  z-index: 1000;
   @include min-device(phone-xl) {
-    position: static;
     min-height: 88px;
     };
+  @include min-device(desk) {
+    position: static;
+    width: 376px;
+  };
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-top: 1px solid $lightgray;
   box-shadow: 0 0 2px 1px rgba(0,0,0,0.25);
   font-size: 28px;
-  z-index: 1;
+  z-index: 1000;
 
   .fas, .shadow {
     margin: 0 25px 5px 25px;
