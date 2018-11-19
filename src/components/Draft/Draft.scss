@@ -2,6 +2,7 @@
 width: 100%;
   .draft {
     @include post();
+    padding: 15px 15px 0 15px;
     height: calc(100vh - 418px);
     @include min-device(phone-m) {
     height: 312px;

@@ -33,7 +33,6 @@ class PostsList extends React.Component {
         });
         typPosts.reverse();
         postsUpdate(typPosts);
-        console.log('dziala');
       });
   }
 

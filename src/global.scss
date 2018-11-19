@@ -33,25 +33,14 @@ $darkgray: hsl(0, 0%, 30%);
     }
   }
 }
-@mixin button($width) {
-  width: $width;
-  background-color: $white;
-  height: 30px;
-  color: $gray;
-  border: 1px solid $gray;
-  border-radius: 15px;
-  font: 500 0.8em futura-pt;
-  cursor: pointer;
-  box-shadow: 0 0 2px 1px rgba(200,200,200,1);
-}
+
 @mixin border($color) {
   border: 1px solid $color;
 }
 @mixin post() {
   position: relative;
   align-items: center;
-  background-color: $white;
-  padding: 15px 15px 10px;
+  padding: 0 0 10px;
   margin: 0 15px 10px 15px;
   width: calc(100% - 30px);
   @include border($lightlightgray);

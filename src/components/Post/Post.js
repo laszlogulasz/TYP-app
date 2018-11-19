@@ -29,7 +29,7 @@ export default class Post extends React.Component {
     const showMore = toExpand || isUserPage;
     const showFadeOut = toExpand && !isExpanded && !isPreview;
     return (
-      <section className="post">
+      <section className={`post ${typFilter}`}>
         <article
           className={
             `post__data

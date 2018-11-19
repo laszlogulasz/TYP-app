@@ -2,36 +2,44 @@
   overflow: auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   height: 100vh;
   @include min-device(phone-xl) {
     height: 100%
   }
   &__elem, &__icon, &__elem > * {
-    margin-top: 15px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: $darkgray;
-      text-align: center;
-    }
-    &__elem, &__elem > * {
-      font: 500 1.8em proxima-nova;
-      color: $darkgray;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-    .fab {
-      font-size: 20px;
-      width: 20px;
-      align-self: center;
-    }
-  .logo {
-    margin: 5vh 0 20px 0;
+    margin-top:10px;
     @include min-device(phone-m) {
-      margin: 20vh 0 50px 0;
+      margin-top: 15px;
+    }
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $darkgray;
+    text-align: center;
+  }
+  &__elem, &__elem > * {
+    font: 500 1.8em proxima-nova;
+    color: $darkgray;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .fab, .fas {
+    font-size: 20px;
+    width: 20px;
+    align-self: center;
+    color: $darkgray;
+  }
+  &__user-info {   
+    font: 300 1.1em proxima-nova;
+    padding: 10px 0 0 0;
+  }
+  .logo {
+    margin-bottom: 10px;
+    @include min-device(phone-m) {
+      margin-bottom: 50px;
     }
     position: relative;
     @include svg($background);
@@ -39,7 +47,7 @@
     width: 220px;
 
     &::before, &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;

@@ -17,7 +17,7 @@
   position: absolute;
   resize: none;
   white-space: pre-wrap;
-  outline:1px solid $lightlightgray;
+  outline: 1px solid $lightlightgray;
 }
 
 .type__containter--resize {
@@ -37,7 +37,7 @@
 }
 
 .type__content:focus {
-  outline:1px solid $lightgray;
+  outline: 1px solid $lightgray;
   box-shadow: none;
 }
 

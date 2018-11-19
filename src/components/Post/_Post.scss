@@ -1,7 +1,8 @@
 .post {
   @include post();
-
   &__data {
+    padding: 15px 15px 0 15px;
+    box-shadow: inset 0px -30px 20px -22px #fff;
     .fa-user,
     h3 {
       display: inline;
@@ -12,9 +13,9 @@
 
     h4 {
       position: absolute;
-      width: 200px;
-      top: 0;
-      left: 45px;
+      width: 250px;
+      top: 15px;
+      left: 60px;
     }
 
     .fa-user {
